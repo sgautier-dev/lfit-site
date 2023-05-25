@@ -4,7 +4,6 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { navigation } from "@/lib/navigation";
 
-
 export default function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -15,7 +14,10 @@ export default function Header() {
 				aria-label="Global"
 			>
 				<div className="flex lg:flex-1">
-					<a href="#" className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust">
+					<a
+						href="#"
+						className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust"
+					>
 						<span className="sr-only">Lynda FIT</span>
 						<p>L. FIT</p>
 					</a>
@@ -25,29 +27,43 @@ export default function Header() {
 						<a
 							key={item.name}
 							href={item.href}
-							className="text-sm font-days leading-6"
+							className="text-sm font-days leading-6 relative group"
 						>
 							{item.name}
+                            <span className="absolute inset-x-0 bottom-0 h-1 mt-1 transform scale-x-0 group-hover:scale-x-100 transition duration-200 ease-out origin-left bg-pinkCust"></span>
 						</a>
 					))}
 				</div>
 				<div className="flex flex-1 items-center justify-end gap-x-6">
-					<a
-						href="#"
-						className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 hover:scale-125 hover:opacity-80 transition"
-					>
+					<a href="#" className="hover:scale-125 hover:opacity-80 transition">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
 							viewBox="0 0 24 24"
-							strokeWidth={1.5}
-							stroke="currentColor"
+							fill="currentColor"
 							className="w-6 h-6 text-pinkCust"
 						>
 							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+								fillRule="evenodd"
+								d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+								clipRule="evenodd"
+							/>
+						</svg>
+					</a>
+
+					<a
+						href="#"
+						className="hidden lg:block hover:scale-125 hover:opacity-80 transition"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							className="w-6 h-6 text-pinkCust"
+						>
+							<path
+								fillRule="evenodd"
+								d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+								clipRule="evenodd"
 							/>
 						</svg>
 					</a>
@@ -78,7 +94,10 @@ export default function Header() {
 				<div className="fixed inset-0 z-10" />
 				<Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-grayCust">
 					<div className="flex items-center gap-x-6">
-						<a href="#" className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust">
+						<a
+							href="#"
+							className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust"
+						>
 							<span className="sr-only">Lynda FIT</span>
 							<p>L. FIT</p>
 						</a>
@@ -120,16 +139,14 @@ export default function Header() {
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
 										viewBox="0 0 24 24"
-										strokeWidth={1.5}
-										stroke="currentColor"
+										fill="currentColor"
 										className="w-6 h-6 text-pinkCust"
 									>
 										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+											fillRule="evenodd"
+											d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+											clipRule="evenodd"
 										/>
 									</svg>
 								</a>
