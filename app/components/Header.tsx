@@ -34,7 +34,7 @@ export default function Header() {
 				<div className="flex flex-1 items-center justify-end gap-x-6">
 					<a
 						href="#"
-						className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6"
+						className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 hover:scale-125 hover:opacity-80 transition"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ export default function Header() {
 							<div className="py-6">
 								<a
 									href="#"
-									className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-darkGrayCust hover:bg-grayCust/30"
+									className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-grayCust/30"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"

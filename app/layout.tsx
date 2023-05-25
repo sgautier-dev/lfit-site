@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "./components/Header";
 import { Exo_2, Days_One } from "next/font/google";
+import Footer from "./components/Footer";
 
 const exo = Exo_2({
 	subsets: ["latin"],
@@ -9,7 +10,7 @@ const exo = Exo_2({
 });
 
 const days = Days_One({
-  weight: ['400'],
+	weight: ["400"],
 	subsets: ["latin"],
 	variable: "--font-days",
 	display: "swap",
@@ -27,9 +28,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="fr" className={`${exo.variable} ${days.variable}`}>
-			<body >
+			<body>
 				<Header />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);
