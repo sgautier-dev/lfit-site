@@ -15,6 +15,9 @@ module.exports = {
       fontFamily: {
         exo: ['var(--font-exo)'],
         days: ['var(--font-days)'],
+        vibes: ['var(--font-vibes)'],
+        caramel: ['var(--font-caramel)'],
+        judson: ['var(--font-judson)'],
       },
     },
   },

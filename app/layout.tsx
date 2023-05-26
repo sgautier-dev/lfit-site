@@ -1,6 +1,6 @@
 import "./globals.css";
 import Header from "./components/Header";
-import { Exo_2, Days_One } from "next/font/google";
+import { Exo_2, Days_One, Great_Vibes, Caramel, Judson } from "next/font/google";
 import Footer from "./components/Footer";
 
 const exo = Exo_2({
@@ -16,6 +16,27 @@ const days = Days_One({
 	display: "swap",
 });
 
+const vibes = Great_Vibes({
+	weight: ["400"],
+	subsets: ["latin"],
+	variable: "--font-vibes",
+	display: "swap",
+});
+
+const caramel = Caramel({
+	weight: ["400"],
+	subsets: ["latin"],
+	variable: "--font-caramel",
+	display: "swap",
+});
+
+const judson = Judson({
+	weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-judson",
+	display: "swap",
+});
+
 export const metadata = {
 	title: "L.FIT votre coach fitness",
 	description: "Lynda coach fitness à la Réunion",
@@ -27,8 +48,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="fr" className={`${exo.variable} ${days.variable}`}>
-			<body>
+		<html lang="fr" className={`${exo.variable} ${days.variable} ${vibes.variable} ${caramel.variable} ${judson.variable} sm:scroll-smooth`}>
+			<body className="bg-white">
 				<Header />
 				{children}
 				<Footer />
