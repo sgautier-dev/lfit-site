@@ -69,7 +69,7 @@ export default function Header() {
 					</a>
 					<a
 						href="#"
-						className="rounded-md bg-pinkCust px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
+						className="rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
 					>
 						S&apos;inscrire
 					</a>
@@ -103,7 +103,7 @@ export default function Header() {
 						</a>
 						<a
 							href="#"
-							className="ml-auto rounded-md bg-pinkCust px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
+							className="ml-auto rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
 						>
 							S&apos;inscrire
 						</a>
