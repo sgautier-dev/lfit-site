@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { training } from "@/lib/formation";
 
 export default function Formation() {
 	return (
@@ -29,64 +30,61 @@ export default function Formation() {
 				</div>
 
 				{/* training cloud */}
-				
+
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
 					<div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
-						<div className="grid grid-cols-2 items-center bg-white/10 p-8 sm:p-10">
-							<Image
-								className="col-span-2 max-h-12 w-full object-contain lg:col-span-1 border"
-								src="/images/icons8-pilates-60.png"
-								alt="Transistor"
-								width={60}
-								height={60}
-							/>
-							<p className="text-2xl font-bold tracking-tight border">PILATES</p>
-						</div>
-						<div className="bg-white/5 p-6 sm:p-10">
-							<img
-								className="max-h-12 w-full object-contain"
-								src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"
-								alt="Reform"
-								width={158}
-								height={48}
-							/>
-						</div>
-						<div className="bg-white/5 p-6 sm:p-10">
-							<img
-								className="max-h-12 w-full object-contain"
-								src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"
-								alt="Tuple"
-								width={158}
-								height={48}
-							/>
-						</div>
-						<div className="bg-white/5 p-6 sm:p-10">
-							<img
-								className="max-h-12 w-full object-contain"
-								src="https://tailwindui.com/img/logos/158x48/laravel-logo-white.svg"
-								alt="Laravel"
-								width={158}
-								height={48}
-							/>
-						</div>
-						<div className="bg-white/5 p-6 sm:p-10">
-							<img
-								className="max-h-12 w-full object-contain"
-								src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"
-								alt="SavvyCal"
-								width={158}
-								height={48}
-							/>
-						</div>
-						<div className="bg-white/5 p-6 sm:p-10">
-							<img
-								className="max-h-12 w-full object-contain"
-								src="https://tailwindui.com/img/logos/158x48/statamic-logo-white.svg"
-								alt="Statamic"
-								width={158}
-								height={48}
-							/>
-						</div>
+						{training.map((item) => (
+							<div
+								className="grid grid-cols-2 items-center bg-white/10 p-6 sm:p-10"
+								key={item.name}
+							>
+								<Image
+									className="max-h-12 w-full object-contain"
+									src={item.iconL}
+									alt={item.name}
+									width={60}
+									height={60}
+								/>
+								<p className="text-2xl font-bold tracking-tight">{item.name}</p>
+							</div>
+						))}
+					</div>
+					<div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+						<img
+							className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+							src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg"
+							alt="Transistor"
+							width={158}
+							height={48}
+						/>
+						<img
+							className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+							src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg"
+							alt="Reform"
+							width={158}
+							height={48}
+						/>
+						<img
+							className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+							src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
+							alt="Tuple"
+							width={158}
+							height={48}
+						/>
+						<img
+							className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+							src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg"
+							alt="SavvyCal"
+							width={158}
+							height={48}
+						/>
+						<img
+							className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+							src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg"
+							alt="Statamic"
+							width={158}
+							height={48}
+						/>
 					</div>
 				</div>
 			</div>
