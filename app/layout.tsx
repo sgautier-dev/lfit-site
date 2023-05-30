@@ -40,6 +40,7 @@ const judson = Judson({
 export const metadata = {
 	title: "L.FIT votre coach fitness",
 	description: "Lynda coach fitness à la Réunion",
+	authors: [{ name: "Sébastien Gautier", url: "https://www.sgautier.dev" }],
 };
 
 export default function RootLayout({
