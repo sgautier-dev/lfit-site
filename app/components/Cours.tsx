@@ -4,7 +4,7 @@ export default function Cours() {
 	return (
 		<div
 			className="relative isolate overflow-hidden pb-16 pt-14 sm:pb-20 mt-32 sm:mt-56 xl:mx-auto xl:max-w-7xl xl:px-8"
-			id="formation"
+			id="cours"
 		>
 			<Image
 				src="/images/mesCours-lyndaFit-1824X1368.jpeg"

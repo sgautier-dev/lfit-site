@@ -97,6 +97,7 @@ export default function Header() {
 						<a
 							href="#"
 							className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust"
+							onClick={() => setMobileMenuOpen(false)}
 						>
 							<span className="sr-only">Lynda FIT</span>
 							<p>L. FIT</p>
@@ -127,6 +128,7 @@ export default function Header() {
 										key={item.name}
 										href={item.href}
 										className="-mx-3 block rounded-lg px-3 py-2 text-base font-days leading-7 text-darkGrayCust hover:bg-grayCust/30"
+										onClick={() => setMobileMenuOpen(false)}
 									>
 										{item.name}
 									</a>
