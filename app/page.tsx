@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Formation from "./components/Formation";
 import Cours from "./components/Cours";
 import Wellness from "./components/Wellness";
+import Refining from "./components/Refining";
 
 export default function Home() {
 	return (
@@ -11,6 +12,7 @@ export default function Home() {
 			<Formation />
 			<Cours />
 			<Wellness/>
+			<Refining/>
 		</main>
 	);
 }

@@ -40,32 +40,32 @@ export default function Wellness() {
 							</div>
 							<p className="mt-2">
 								Agit à la fois sur le corps et l&apos;esprit{" "}
-								<ul>
-									<li>
-										- Il diminue les douleurs grâce au renforcement musculaire
-										en profondeur.
-									</li>
-								</ul>
-								<ul>
-									<li>
-										- Il tonifie, affine et assouplit en étirant et
-										raffermissant les muscles.
-									</li>
-								</ul>
-								<ul>
-									<li>
-										- Il améliore le souffle grâce au travail sur la
-										respiration. - Il détend et aide à lutter contre le stress
-										physique et mental.
-									</li>
-								</ul>
-								<ul>
-									<li>
-										- Il vous aide à vous redresser grâce au travail postural
-										pour apprend à mieux se tenir.
-									</li>
-								</ul>
 							</p>
+							<ul>
+								<li>
+									- Il diminue les douleurs grâce au renforcement musculaire en
+									profondeur.
+								</li>
+							</ul>
+							<ul>
+								<li>
+									- Il tonifie, affine et assouplit en étirant et raffermissant
+									les muscles.
+								</li>
+							</ul>
+							<ul>
+								<li>
+									- Il améliore le souffle grâce au travail sur la respiration.
+									- Il détend et aide à lutter contre le stress physique et
+									mental.
+								</li>
+							</ul>
+							<ul>
+								<li>
+									- Il vous aide à vous redresser grâce au travail postural pour
+									apprend à mieux se tenir.
+								</li>
+							</ul>
 						</div>
 						<div className="bg-grayCust/40 p-6 sm:p-10">
 							<div className="grid grid-cols-2 items-center ">
@@ -88,7 +88,7 @@ export default function Wellness() {
 								mental.
 							</p>
 						</div>
-                        <div className="bg-grayCust/40 p-6 sm:p-10">
+						<div className="bg-grayCust/40 p-6 sm:p-10">
 							<div className="grid grid-cols-2 items-center ">
 								<Image
 									className="max-h-12 w-full object-contain"
@@ -100,7 +100,9 @@ export default function Wellness() {
 								<p className="text-2xl font-bold tracking-tight">Stretching</p>
 							</div>
 							<p className="mt-2">
-								Permet d&apos;améliorer la souplesse du corps, diminue les problèmes de dos et dénoue les muscles et les crispations du corps.
+								Permet d&apos;améliorer la souplesse du corps, diminue les
+								problèmes de dos et dénoue les muscles et les crispations du
+								corps.
 							</p>
 						</div>
 					</div>
