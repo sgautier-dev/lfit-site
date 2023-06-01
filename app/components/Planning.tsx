@@ -1,10 +1,6 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import {
-	ArrowDownCircleIcon,
-	ArrowPathIcon,
-	ArrowUpCircleIcon,
-} from "@heroicons/react/20/solid";
+
 
 const days = [
 	{
@@ -20,7 +16,7 @@ const days = [
 				status: "Paid",
 				client: "Reform",
 				description: "Website redesign",
-				icon: ArrowUpCircleIcon,
+				icon: "/images/icons8-pilates-30.png",
 			},
 			{
 				id: 2,
@@ -30,18 +26,7 @@ const days = [
 				status: "Withdraw",
 				client: "Tom Cook",
 				description: "Salary",
-				icon: ArrowDownCircleIcon,
-			},
-			{
-				id: 3,
-				invoiceNumber: "00009",
-				href: "#",
-				amount: "$2,000.00 USD",
-				tax: "$130.00",
-				status: "Overdue",
-				client: "Tuple",
-				description: "Logo design",
-				icon: ArrowPathIcon,
+				icon: "/images/icons8-stratching-30.png",
 			},
 		],
 	},
@@ -58,7 +43,7 @@ const days = [
 				status: "Paid",
 				client: "SavvyCal",
 				description: "Website redesign",
-				icon: ArrowUpCircleIcon,
+				icon: "/images/icons8-fitnessBis-30.png",
 			},
 		],
 	},
@@ -87,7 +72,7 @@ export default function Planning() {
 					<p className="mt-6 text-lg">Un programme qui évolue avec vous.</p>
 				</div>
 
-				<div className="mt-6 overflow-hidden border-t border-pinkCust">
+				<div className="mt-6 overflow-hidden border border-pinkCust rounded-lg">
 					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 						<div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
 							<table className="w-full text-left">
@@ -101,13 +86,13 @@ export default function Planning() {
 								<tbody>
 									{days.map((day) => (
 										<Fragment key={day.dateTime}>
-											<tr className="text-xl leading-6">
+											<tr className="text-4xl font-caramel leading-6">
 												<th
 													scope="colgroup"
 													colSpan={3}
-													className="relative isolate py-2 font-semibold"
+													className="relative isolate py-2 font-semibold "
 												>
-													<time dateTime={day.dateTime}>{day.date}</time>
+													<time dateTime={day.date}>{day.date}</time>
 													<div className="absolute inset-y-0 right-full -z-10 w-screen border-b border-pinkCust bg-grayCust" />
 													<div className="absolute inset-y-0 left-0 -z-10 w-screen border-b border-pinkCust bg-grayCust" />
 												</th>
@@ -116,13 +101,17 @@ export default function Planning() {
 												<tr key={transaction.id}>
 													<td className="relative py-5 pr-6">
 														<div className="flex gap-x-6">
-															<transaction.icon
-																className="hidden h-6 w-5 flex-none text-gray-400 sm:block"
+															<Image
+																className="object-contain"
+																src={transaction.icon}
+																alt="pilates lynda fit"
+																width={30}
+																height={30}
 																aria-hidden="true"
 															/>
 															<div className="flex-auto">
 																<div className="flex items-start gap-x-3">
-																	<div className="text-sm font-medium leading-6 text-gray-900">
+																	<div className="text-sm font-medium leading-6 text-black">
 																		{transaction.amount}
 																	</div>
 																	<div className="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset">
@@ -136,11 +125,11 @@ export default function Planning() {
 																) : null}
 															</div>
 														</div>
-														<div className="absolute bottom-0 right-full h-px w-screen bg-gray-100" />
-														<div className="absolute bottom-0 left-0 h-px w-screen bg-gray-100" />
+														<div className="absolute bottom-0 right-full h-px w-screen bg-grayCust" />
+														<div className="absolute bottom-0 left-0 h-px w-screen bg-grayCust" />
 													</td>
 													<td className="hidden py-5 pr-6 sm:table-cell">
-														<div className="text-sm leading-6 text-gray-900">
+														<div className="text-sm leading-6 text-black">
 															{transaction.client}
 														</div>
 														<div className="mt-1 text-xs leading-5 text-gray-500">
@@ -166,7 +155,7 @@ export default function Planning() {
 														</div>
 														<div className="mt-1 text-xs leading-5 text-gray-500">
 															Invoice{" "}
-															<span className="text-gray-900">
+															<span className="text-black">
 																#{transaction.invoiceNumber}
 															</span>
 														</div>
