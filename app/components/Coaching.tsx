@@ -9,8 +9,8 @@ export default function Coaching() {
 			<Image
 				src="/images/coaching_lyndafit-2400X1803.jpg"
 				alt="Lynda votre coach fitness à la réunion"
-				width={1824}
-				height={1368}
+				width={2400}
+				height={1803}
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
@@ -27,7 +27,14 @@ export default function Coaching() {
 				</div>
 
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
-					<div className="px-6">
+                <Image
+						src="/images/tyler-nix-Y1drF0Y3Oe0-unsplash-1920X2880.jpg"
+						alt="Lynda votre coach fitness à la réunion"
+						width={200}
+						height={500}
+						className="mr-6 lg:mr-0 aspect-auto object-cover lg:justify-self-end rounded-xl lg:order-2"
+					/>
+					<div className="px-6 mt-6 lg:mt-0">
 						<h3 className="text-xl font-bold tracking-tight">
 							Investir sur soi même c’est le placement le plus rentable à long
 							terme
@@ -48,13 +55,7 @@ export default function Coaching() {
 							Me Contacter
 						</button>
 					</div>
-					<Image
-						src="/images/tyler-nix-Y1drF0Y3Oe0-unsplash-1920X2880.jpg"
-						alt="Lynda votre coach fitness à la réunion"
-						width={200}
-						height={500}
-						className="mr-6 lg:mr-0 mt-6 aspect-auto object-cover justify-self-end rounded-xl opacity-50 lg:opacity-100"
-					/>
+					
 				</div>
 			</div>
 		</div>

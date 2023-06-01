@@ -30,12 +30,15 @@ export default function Header() {
 							className="text-sm font-days leading-6 relative group"
 						>
 							{item.name}
-                            <span className="absolute inset-x-0 bottom-0 h-1 mt-1 transform scale-x-0 group-hover:scale-x-100 transition duration-200 ease-out origin-left bg-pinkCust"></span>
+							<span className="absolute inset-x-0 bottom-0 h-1 mt-1 transform scale-x-0 group-hover:scale-x-100 transition duration-200 ease-out origin-left bg-pinkCust"></span>
 						</a>
 					))}
 				</div>
 				<div className="flex flex-1 items-center justify-end gap-x-6">
-					<a href="#" className="hover:scale-125 hover:opacity-80 transition">
+					<a
+						href={`tel:+262692799392`}
+						className="hover:scale-125 hover:opacity-80 transition"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
@@ -81,7 +84,7 @@ export default function Header() {
 						onClick={() => setMobileMenuOpen(true)}
 					>
 						<span className="sr-only">Open main menu</span>
-						<Bars3Icon className="h-6 w-6" aria-hidden="true" />
+						<Bars3Icon className="h-8 w-8" aria-hidden="true" />
 					</button>
 				</div>
 			</nav>
@@ -115,7 +118,7 @@ export default function Header() {
 						>
 							<span className="sr-only">Close menu</span>
 							<XMarkIcon
-								className="h-6 w-6 text-darkGrayCust"
+								className="h-8 w-8 text-darkGrayCust"
 								aria-hidden="true"
 							/>
 						</button>

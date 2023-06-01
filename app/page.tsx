@@ -6,6 +6,7 @@ import Refining from "./components/Refining";
 import Toning from "./components/Toning";
 import Coaching from "./components/Coaching";
 import Contact from "./components/Contact";
+import Planning from "./components/Planning";
 
 export default function Home() {
 	return (
@@ -16,8 +17,10 @@ export default function Home() {
 			<Wellness />
 			<Refining />
 			<Toning />
+			<Planning/>
 			<Coaching />
 			<Contact />
+			
 		</main>
 	);
 }
