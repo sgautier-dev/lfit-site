@@ -56,7 +56,11 @@ export default function Toning() {
 								<p className="text-2xl font-bold tracking-tight">Pilates</p>
 							</div>
 							<p className="mt-2">
-								Agit à la fois sur le corps et l&apos;esprit{" "}
+								Le Pilates renforce et étire les muscles, soulageant ainsi les
+								douleurs. Il affine la silhouette, améliore le souffle et aide à
+								lutter contre le stress. De plus, son approche posturale vous
+								aide à mieux vous tenir, agissant ainsi sur le corps et
+								l&apos;esprit.
 							</p>
 						</div>
 						<div className="bg-grayCust/40 p-6 sm:p-10">
@@ -88,7 +92,13 @@ export default function Toning() {
 								/>
 								<p className="text-2xl font-bold tracking-tight">Yogalates</p>
 							</div>
-							<p className="mt-2">Un esprit zen dans un corps tonique.</p>
+							<p className="mt-2">
+								A mi-chemin entre yoga et Pilates, le Yogalates vous apporte
+								souplesse, stabilité et force. Il renforce les muscles profonds,
+								atténue les douleurs et améliore la posture pour un maintien
+								optimal. Un corps gainé et allongé, une tranquillité
+								d&apos;esprit : la clé du lâcher prise.
+							</p>
 						</div>
 					</div>
 				</div>

@@ -39,27 +39,12 @@ export default function Wellness() {
 								<p className="text-2xl font-bold tracking-tight">Pilates</p>
 							</div>
 							<p className="mt-2">
-								Agit à la fois sur le corps et l&apos;esprit{" "}
+								Le Pilates renforce et étire les muscles, soulageant ainsi les
+								douleurs. Il affine la silhouette, améliore le souffle et aide à
+								lutter contre le stress. De plus, son approche posturale vous
+								aide à mieux vous tenir, agissant ainsi sur le corps et
+								l&apos;esprit.
 							</p>
-							<ul>
-								<li>
-									- Il diminue les douleurs grâce au renforcement musculaire en
-									profondeur.
-								</li>
-								<li>
-									- Il tonifie, affine et assouplit en étirant et raffermissant
-									les muscles.
-								</li>
-								<li>
-									- Il améliore le souffle grâce au travail sur la respiration.
-									- Il détend et aide à lutter contre le stress physique et
-									mental.
-								</li>
-								<li>
-									- Il vous aide à vous redresser grâce au travail postural pour
-									apprend à mieux se tenir.
-								</li>
-							</ul>
 						</div>
 						<div className="bg-grayCust/40 p-6 sm:p-10">
 							<div className="grid grid-cols-2 items-center ">
@@ -73,13 +58,11 @@ export default function Wellness() {
 								<p className="text-2xl font-bold tracking-tight">Yogalates</p>
 							</div>
 							<p className="mt-2">
-								Un esprit zen dans un corps tonique. Séance de gym douce à mi
-								chemin entre le yoga et le Pilates. Permet de gagner en
-								souplesse, stabilité, et force. les muscles profonds sont
-								renforcés, certaines douleurs sont atténuées, la posture est
-								améliorée avec un meilleur maintient, un corps plus gainé et
-								plus allongé. Ce cours favorise le lâcher prise et le calme
-								mental.
+								A mi-chemin entre yoga et Pilates, le Yogalates vous apporte
+								souplesse, stabilité et force. Il renforce les muscles profonds,
+								atténue les douleurs et améliore la posture pour un maintien
+								optimal. Un corps gainé et allongé, une tranquillité d&apos;esprit :
+								la clé du lâcher prise.
 							</p>
 						</div>
 						<div className="bg-grayCust/40 p-6 sm:p-10">
