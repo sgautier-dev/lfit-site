@@ -2,49 +2,6 @@ import Image from "next/image";
 import { Fragment } from "react";
 import getSchedule from "@/sanity/lib/getSchedule";
 
-// const schedule = [
-// 	{
-// 		date: "Lundi",
-// 		sessions: [
-// 			{
-// 				id: 1,
-// 				start: "17:00",
-// 				end: "17:50",
-// 				course: "Pilates ballon paille",
-// 				duration: "50 mins",
-// 				description:
-// 					"Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.",
-// 				icon: "/images/icons8-pilates-30.png",
-// 			},
-// 			{
-// 				id: 2,
-// 				start: "17:50",
-// 				end: "18:35",
-// 				course: "Stretching relaxation",
-// 				duration: "45 mins",
-// 				description:
-// 					"Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.",
-// 				icon: "/images/icons8-stratching-30.png",
-// 			},
-// 		],
-// 	},
-// 	{
-// 		date: "Mardi",
-// 		sessions: [
-// 			{
-// 				id: 4,
-// 				start: "17:30",
-// 				end: "18:20",
-// 				course: "Yogalates",
-// 				duration: "50 mins",
-// 				description:
-// 					"Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.",
-// 				icon: "/images/icons8-fitnessBis-30.png",
-// 			},
-// 		],
-// 	},
-// ];
-
 export default async function Planning() {
 	const schedule = await getSchedule();
 	return (
@@ -69,7 +26,48 @@ export default async function Planning() {
 					<p className="mt-6 text-lg">Un programme qui évolue avec vous.</p>
 				</div>
 
-				<div className="mt-6 overflow-hidden border-2 border-pinkCust rounded-lg">
+				<div className="mx-auto max-w-7xl px-6 lg:px-8">
+					<div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3">
+						{schedule.map((day) => (
+							<Fragment key={day.date}>
+								<div className="bg-grayCust/40 p-6 sm:p-10">
+									<p className="text-2xl text-left font-bold tracking-tight">
+										{day.date}
+									</p>
+									{day.sessions.map((session) => (
+										<div className="mt-4 flex gap-x-6" key={session._id}>
+											<Image
+												className="object-contain"
+												src={session.icon}
+												alt={`${session.course} icon`}
+												width={30}
+												height={30}
+												aria-hidden="true"
+											/>
+
+											<div className="flex-auto">
+												<div className="flex items-start gap-x-3">
+													<div className="font-medium leading-6 text-black">
+														{session.course}
+													</div>
+
+													<div className="mt-1 font-medium leading-5 text-pinkCust">
+														{session.start}
+														{"-"}
+														{session.end}
+													</div>
+												</div>
+												<div className="h-px w-full bg-darkGrayCust/50" />
+											</div>
+										</div>
+									))}
+								</div>
+							</Fragment>
+						))}
+					</div>
+				</div>
+
+				{/* <div className="mt-6 overflow-hidden border-2 border-pinkCust rounded-lg shadow-md shadow-pinkCust/50">
 					<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 						<div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
 							<table className="w-full text-left">
@@ -77,7 +75,7 @@ export default async function Planning() {
 									<tr>
 										<th>Cours</th>
 										<th className="hidden sm:table-cell">Description</th>
-										<th>Heure</th>
+										<th>Durée</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -87,7 +85,7 @@ export default async function Planning() {
 												<th
 													scope="colgroup"
 													colSpan={3}
-													className="relative isolate py-2 font-semibold "
+													className="relative isolate py-2 font-semibold"
 												>
 													{day.date}
 													<div className="absolute inset-y-0 right-full -z-10 w-screen border-b-2 border-grayCust bg-grayCust" />
@@ -95,24 +93,30 @@ export default async function Planning() {
 												</th>
 											</tr>
 											{day.sessions.map((session) => (
-												<tr key={session._id}>
+												<tr
+													key={session._id}
+													className="transition-colors duration-200 hover:bg-white/40"
+												>
 													<td className="relative py-5 pr-6">
 														<div className="flex gap-x-6">
 															<Image
 																className="object-contain"
 																src={session.icon}
-																alt="pilates lynda fit"
+																alt={`${session.course} icon`}
 																width={30}
 																height={30}
 																aria-hidden="true"
 															/>
 															<div className="flex-auto">
 																<div className="flex items-start gap-x-3">
-																	<div className="text-sm font-medium leading-6 text-black">
+																	<div className="text-lg font-medium leading-6 text-black">
 																		{session.course}
 																	</div>
-																	<div className="rounded-md py-1 px-2 text-xs font-medium ring-1 ring-inset ring-pinkCust">
-																		{session.duration} mins
+
+																	<div className="mt-1 text-lg leading-5 text-pinkCust">
+																		{session.start}
+																		{"-"}
+																		{session.end}
 																	</div>
 																</div>
 															</div>
@@ -121,15 +125,13 @@ export default async function Planning() {
 														<div className="absolute bottom-0 left-0 h-px w-screen bg-grayCust" />
 													</td>
 													<td className="hidden py-5 pr-6 sm:table-cell">
-														<div className="text-sm leading-6 text-darkGrayCust/80">
+														<div className="text-base leading-6 text-darkGrayCust">
 															{session.description}
 														</div>
 													</td>
-													<td className="py-5 text-right">
-														<div className="text-sm font-medium leading-6">
-															{session.start}
-															{"-"}
-															{session.end}
+													<td className="py-5 text-center">
+														<div className="rounded-md py-1 px-2 text-sm font-medium ring-1 ring-inset ring-pinkCust">
+															{session.duration} mins
 														</div>
 													</td>
 												</tr>
@@ -140,7 +142,7 @@ export default async function Planning() {
 							</table>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
