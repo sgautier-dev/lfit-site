@@ -33,7 +33,7 @@ export default function Refining() {
 								<Image
 									className="max-h-12 w-full object-contain"
 									src="/images/icons8-girl-running-60.png"
-									alt="pilates lynda fit"
+									alt="circuit training lynda fit"
 									width={60}
 									height={60}
 								/>
@@ -53,7 +53,7 @@ export default function Refining() {
 								<Image
 									className="max-h-12 w-full object-contain"
 									src="/images/icons8-fitnessBis-60.png"
-									alt="yogalates lynda fit"
+									alt="hiit lynda fit"
 									width={60}
 									height={60}
 								/>
