@@ -17,10 +17,10 @@ export default function Home() {
 			<Wellness />
 			<Refining />
 			<Toning />
-			<Planning/>
+			{/* @ts-expect-error Async Server Component */}
+			<Planning />
 			<Coaching />
 			<Contact />
-			
 		</main>
 	);
 }

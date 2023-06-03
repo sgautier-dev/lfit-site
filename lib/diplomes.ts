@@ -1,26 +1,26 @@
 export const diploma = [
 	{
-		name: "Yogalates",
+		name: "Diplome Yogalates Lynda",
 		image: "/images/Certif_YogaLates_Lynda.jpeg",
 	},
     {
-		name: "Pilates",
-		image: "/images/CERTIFICATION PILATES MATWORK_Lynda.jpg",
+		name: "Diplome Pilates Lynda",
+		image: "/images/CERTIFICATION_PILATES_MATWORK_Lynda.jpg",
 	},
     {
-		name: "Trx",
-		image: "/images/Dilpôme TRX_Lynda.jpg",
+		name: "Diplome Trx Lynda",
+		image: "/images/Diplome_TRX_Lynda.jpg",
 	},
     {
-		name: "Aerobic",
-		image: "/images/Diplôme Aerobic pro instructeur_Lynda.jpg",
+		name: "Diplome Aerobic Lynda",
+		image: "/images/Diplome_Aerobic_pro_instructeur_Lynda.jpg",
 	},
     {
-		name: "DiplomeEtat",
-		image: "/images/Diplome Bret d'Etat1024_Lynda.jpg",
+		name: "Brevet Etat Lynda",
+		image: "/images/Brevet_Etat_Lynda.jpg",
 	},
     {
-		name: "Fisaf",
-		image: "/images/Diplôme FISAF Basic training instructeur1024_Lynda.jpg",
+		name: "Diplome Fisaf Lynda",
+		image: "/images/Diplome_FISAF_Basic_training_instructeur_Lynda.jpg",
 	},
 ];

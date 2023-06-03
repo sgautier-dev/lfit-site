@@ -46,18 +46,18 @@ export default async function Planning() {
 											/>
 
 											<div className="flex-auto">
-												<div className="flex items-start gap-x-3">
+												<div className="flex flex-col items-start gap-x-3">
 													<div className="font-medium leading-6 text-black">
 														{session.course}
 													</div>
 
-													<div className="mt-1 font-medium leading-5 text-pinkCust">
+													<div className="mt-1 font-medium leading-5  text-pinkCust">
 														{session.start}
 														{"-"}
 														{session.end}
+														<div className="h-px w-full bg-darkGrayCust/50" />
 													</div>
 												</div>
-												<div className="h-px w-full bg-darkGrayCust/50" />
 											</div>
 										</div>
 									))}
