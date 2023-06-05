@@ -35,7 +35,7 @@ export default async function Planning() {
 										{day.date}
 									</p>
 									{day.sessions.map((session) => (
-										<div className="mt-4 flex gap-x-6" key={session._id}>
+										<div className="mt-4 flex gap-x-6 text-lg" key={session._id}>
 											<Image
 												className="object-contain"
 												src={session.icon}
