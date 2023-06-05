@@ -21,13 +21,13 @@ export default function Coaching() {
 						Le Coaching
 					</h2>
 					<p className="mt-6 text-lg">
-						Je suis votre COACH PERSONNEL à domicile ou en extérieur seule,
+						Je suis votre COACH PERSONNEL à domicile ou en extérieur, seule,
 						entre amis ou en famille.
 					</p>
 				</div>
 
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
-                <Image
+					<Image
 						src="/images/tyler-nix-Y1drF0Y3Oe0-unsplash-1920X2880.jpg"
 						alt="Lynda votre coach fitness à la réunion"
 						width={200}
@@ -43,19 +43,23 @@ export default function Coaching() {
 							Dans un cadre privé, vous bénéficiez de toute l’attention dont
 							vous avez besoin en fonction de votre planning. Le coaching
 							représente la solution pour démarrer ou reprendre sa santé et son
-							corps en main Pourquoi avoir un coach : - Avoir des séances sur
-							mesure et donc plus efficaces - Etre motivé chaque semaine par sa
-							coach et sortir de sa zone de confort - Vous amenez là où vous
-							n’êtes pas capable d’aller seul
+							corps en main. Pourquoi avoir un coach :
 						</p>
-						<button
-							type="button"
-							className="mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
+						<ul className="text-lg">
+							<li>- Avoir des séances sur mesure et donc plus efficaces.</li>
+							<li>
+								- Etre motivé chaque semaine par sa coach et sortir de sa zone
+								de confort.
+							</li>
+							<li>- Vous amenez là où vous n’êtes pas capable d’aller seul.</li>
+						</ul>
+						<a
+							href="#contact"
+							className="inline-flex items-center mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
 						>
 							Me Contacter
-						</button>
+						</a>
 					</div>
-					
 				</div>
 			</div>
 		</div>

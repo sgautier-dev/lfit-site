@@ -61,7 +61,7 @@ export default function Refining() {
 							</div>
 							<p className="mt-2">
 								Une séance courte et intense. A exercer à votre rythme pour
-								redessiner votre silhouette, effacer les petites rondeur.
+								redessiner votre silhouette, effacer les petites rondeurs.
 							</p>
 						</div>
 					</div>

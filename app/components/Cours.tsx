@@ -37,12 +37,13 @@ export default function Cours() {
 							prendre le temps pour soi, pour son corps, les bienfaits de ces
 							moments réguliers se retrouveront dans votre quotidien.
 						</p>
-						<button
-							type="button"
-							className="mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
+						<a
+							href="#contact"
+							className="inline-flex items-center mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
+						
 						>
 							Me Contacter
-						</button>
+						</a>
 					</div>
 					<Image
 						src="/images/nate-johnston-2gBpsNuHcyA-unsplash-1920X2880.jpg"

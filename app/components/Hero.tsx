@@ -32,12 +32,13 @@ export default function Hero() {
 							corps et à relever de nouveaux défis sportifs. Ensemble,
 							découvrons les merveilles du sport et du bien-être corporel.
 						</p>
-						<button
-							type="button"
-							className="mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
+						<a
+							href="#contact"
+							className="inline-flex items-center mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
+						
 						>
 							Me Contacter
-						</button>
+						</a>
 					</div>
 				</div>
 
