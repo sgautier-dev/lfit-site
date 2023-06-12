@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import { training } from "@/lib/formations";
 import { diploma } from "@/lib/diplomes";
+import { Transition } from "@headlessui/react";
+import { InView } from "react-intersection-observer";
 
 export default function Formation() {
 	return (
@@ -34,7 +37,7 @@ export default function Formation() {
 				{/* training cloud */}
 
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
-					<div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
+					{/* <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
 						{training.map((item) => (
 							<div
 								className="grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10"
@@ -50,7 +53,44 @@ export default function Formation() {
 								<p className="text-2xl font-bold tracking-tight">{item.name}</p>
 							</div>
 						))}
-					</div>
+					</div> */}
+					<InView>
+						{({ inView, ref }) => (
+							<div ref={ref}>
+								<Transition.Root show={inView}>
+									<Transition.Child
+										as="div"
+										enter="transition-opacity duration-500"
+										enterFrom="opacity-0"
+										enterTo="opacity-100"
+										className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3"
+									>
+										{training.map((item) => (
+											<Transition.Child
+												as="div"
+												enter="transition-all duration-500"
+												enterFrom="opacity-0 scale-50"
+												enterTo="opacity-100 scale-100"
+												className="grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10"
+												key={item.name}
+											>
+												<Image
+													className="max-h-12 w-full object-contain"
+													src={item.iconL}
+													alt={item.name}
+													width={60}
+													height={60}
+												/>
+												<p className="text-2xl font-bold tracking-tight">
+													{item.name}
+												</p>
+											</Transition.Child>
+										))}
+									</Transition.Child>
+								</Transition.Root>
+							</div>
+						)}
+					</InView>
 
 					{/* diploma cloud */}
 					<div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">
