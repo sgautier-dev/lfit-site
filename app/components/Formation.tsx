@@ -58,19 +58,13 @@ export default function Formation() {
 						{({ inView, ref }) => (
 							<div ref={ref}>
 								<Transition.Root show={inView}>
-									<Transition.Child
-										as="div"
-										enter="transition-opacity duration-500"
-										enterFrom="opacity-0"
-										enterTo="opacity-100"
-										className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3"
-									>
+									<div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
 										{training.map((item) => (
 											<Transition.Child
 												as="div"
 												enter="transition-all duration-500"
-												enterFrom="opacity-0 scale-50"
-												enterTo="opacity-100 scale-100"
+												enterFrom="scale-50"
+												enterTo="scale-100"
 												className="grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10"
 												key={item.name}
 											>
@@ -86,7 +80,7 @@ export default function Formation() {
 												</p>
 											</Transition.Child>
 										))}
-									</Transition.Child>
+									</div>
 								</Transition.Root>
 							</div>
 						)}
