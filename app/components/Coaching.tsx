@@ -42,8 +42,8 @@ export default function Coaching() {
 						<p className="mt-2 text-lg">
 							Dans un cadre privé, vous bénéficiez de toute l’attention dont
 							vous avez besoin en fonction de votre planning. Le coaching
-							représente la solution pour démarrer ou reprendre sa santé et son
-							corps en main. Pourquoi avoir un coach :
+							représente la solution pour démarrer ou reprendre en main sa santé
+							et son corps. Pourquoi avoir un coach :
 						</p>
 						<ul className="text-lg">
 							<li>- Avoir des séances sur mesure et donc plus efficaces.</li>
@@ -51,7 +51,7 @@ export default function Coaching() {
 								- Etre motivé chaque semaine par sa coach et sortir de sa zone
 								de confort.
 							</li>
-							<li>- Vous amenez là où vous n’êtes pas capable d’aller seul.</li>
+							<li>- Vous amener là où vous n’êtes pas capable d’aller seul.</li>
 						</ul>
 						<a
 							href="#contact"

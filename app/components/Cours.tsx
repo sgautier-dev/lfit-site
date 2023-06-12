@@ -21,8 +21,8 @@ export default function Cours() {
 						Mes Cours
 					</h2>
 					<p className="mt-6 text-lg">
-						Les cours se déroulent sur la plage de l’hermitage, île de la
-						réunion, en petit groupe.
+						Les cours se déroulent sur la plage de l’Hermitage, Ile de la
+						Réunion, en petit groupe.
 					</p>
 				</div>
 
@@ -33,7 +33,7 @@ export default function Cours() {
 							pour soi
 						</h3>
 						<p className="mt-2 text-lg">
-							Pour une reprise ou une découverte, accordez vous ce moment pour
+							Pour une reprise ou une découverte, accordez-vous ce moment pour
 							prendre le temps pour soi, pour son corps, les bienfaits de ces
 							moments réguliers se retrouveront dans votre quotidien.
 						</p>

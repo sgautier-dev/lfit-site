@@ -22,7 +22,7 @@ export default function Hero() {
 							Renouer avec son corps
 						</h2>
 						<p className="mt-2">
-							Salut, je suis Lynda, ancienne mannequin et coach sportive
+							Je suis Lynda, ancienne mannequin et coach sportive
 							certifiée, passionnée par le fitness depuis mon adolescence.
 							Formée à Paris, je me suis perfectionnée dans diverses disciplines
 							dont les cours Les Mills et le Pilates. Depuis La Réunion,
