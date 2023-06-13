@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { training } from "@/lib/formations";
 import { diploma } from "@/lib/diplomes";
-import { Transition } from "@headlessui/react";
 import { InView } from "react-intersection-observer";
 
 export default function Formation() {
@@ -37,23 +36,6 @@ export default function Formation() {
 				{/* training cloud */}
 
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
-					{/* <div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
-						{training.map((item) => (
-							<div
-								className="grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10"
-								key={item.name}
-							>
-								<Image
-									className="max-h-12 w-full object-contain"
-									src={item.iconL}
-									alt={item.name}
-									width={60}
-									height={60}
-								/>
-								<p className="text-2xl font-bold tracking-tight">{item.name}</p>
-							</div>
-						))}
-					</div> */}
 					<InView threshold={0.5} triggerOnce>
 						{({ inView, ref }) => (
 							<div ref={ref}>

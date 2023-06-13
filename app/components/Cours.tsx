@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { InView } from "react-intersection-observer";
 
 export default function Cours() {
 	return (
@@ -40,18 +42,24 @@ export default function Cours() {
 						<a
 							href="#contact"
 							className="inline-flex items-center mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"
-						
 						>
 							Me Contacter
 						</a>
 					</div>
-					<Image
-						src="/images/nate-johnston-2gBpsNuHcyA-unsplash-1920X2880.jpg"
-						alt="Lynda votre coach fitness à la réunion"
-						width={200}
-						height={500}
-						className="mr-6 lg:mr-0 mt-6 aspect-auto object-cover justify-self-end rounded-xl"
-					/>
+					<InView threshold={0.5} triggerOnce>
+						{({ inView, ref }) => (
+							<Image
+								ref={ref}
+								src="/images/nate-johnston-2gBpsNuHcyA-unsplash-1920X2880.jpg"
+								alt="Lynda votre coach fitness à la réunion"
+								width={200}
+								height={500}
+								className={`mr-6 lg:mr-0 mt-6 aspect-auto object-cover justify-self-end rounded-xl ${
+									inView ? "animate-slide" : "invisible"
+								}`}
+							/>
+						)}
+					</InView>
 				</div>
 			</div>
 		</div>
