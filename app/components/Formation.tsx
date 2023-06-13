@@ -54,34 +54,32 @@ export default function Formation() {
 							</div>
 						))}
 					</div> */}
-					<InView>
+					<InView threshold={0.5} triggerOnce>
 						{({ inView, ref }) => (
 							<div ref={ref}>
-								<Transition.Root show={inView}>
-									<div className="-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3">
-										{training.map((item) => (
-											<Transition.Child
-												as="div"
-												enter="transition-all duration-500"
-												enterFrom="scale-50"
-												enterTo="scale-100"
-												className="grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10"
-												key={item.name}
-											>
-												<Image
-													className="max-h-12 w-full object-contain"
-													src={item.iconL}
-													alt={item.name}
-													width={60}
-													height={60}
-												/>
-												<p className="text-2xl font-bold tracking-tight">
-													{item.name}
-												</p>
-											</Transition.Child>
-										))}
-									</div>
-								</Transition.Root>
+								<div
+									className={`-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3 transition-transform duration-500`}
+								>
+									{training.map((item) => (
+										<div
+											className={`grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10 ${
+												inView ? "animate-scale" : "opacity-0 scale-20"
+											}`}
+											key={item.name}
+										>
+											<Image
+												className="max-h-12 w-full object-contain"
+												src={item.iconL}
+												alt={item.name}
+												width={60}
+												height={60}
+											/>
+											<p className="text-2xl font-bold tracking-tight">
+												{item.name}
+											</p>
+										</div>
+									))}
+								</div>
 							</div>
 						)}
 					</InView>

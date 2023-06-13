@@ -19,7 +19,17 @@ module.exports = {
         caramel: ['var(--font-caramel)'],
         judson: ['var(--font-judson)'],
       },
+      keyframes: {
+        scale: {
+          '0%': { transform: 'scale(0.2)', opacity: '0' },
+          '50%': { transform: 'scale(1)', opacity: '1' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+      },
+      animation: {
+        scale: 'scale 1s ease-out forwards',
+      },
     },
   },
-  plugins: [ require('@tailwindcss/forms'),],
+  plugins: [require('@tailwindcss/forms'),],
 }
