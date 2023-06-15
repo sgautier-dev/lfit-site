@@ -1,10 +1,12 @@
 import Image from "next/image";
+import getRefining from "@/sanity/lib/getRefining";
 
-export default function Refining() {
+export default async function Refining() {
+	const refining = await getRefining();
 	return (
 		<div className="relative isolate overflow-hidden pb-16 pt-14 sm:pb-20 mt-32 sm:mt-56 xl:mx-auto xl:max-w-7xl xl:px-8">
 			<Image
-				src="/images/bruce-mars-HHXdPG_eTIQ-unsplash-2400X1655.jpg"
+				src={refining.backgroundImage}
 				alt="Lynda votre coach fitness à la réunion"
 				width={2400}
 				height={1655}
@@ -14,57 +16,32 @@ export default function Refining() {
 
 			<div className="isolate mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
-					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl">
-						S’affiner
+					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl capitalize">
+						{refining.title}
 					</h2>
-					<p className="mt-6 text-lg">
-						Pour une silhouette plus harmonieuse, l’entrainement mixant le
-						cardio et le renforcement vous permettront d’observer de rapides
-						changements physiques.
-					</p>
+					<p className="mt-6 text-lg">{refining.presentation}</p>
 				</div>
 
-				{/* training cloud */}
+				{/* cloud */}
 
-				<div className="mx-auto max-w-7xl px-6 lg:px-8">
-					<div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3">
-						<div className="bg-grayCust/40 p-6 sm:p-10">
-							<div className="grid grid-cols-2 items-center ">
+				<div className="py-8 sm:py-10 lg:py-12 -mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3">
+					{refining.practices.map((practice) => (
+						<div key={practice._id} className="bg-grayCust/40 p-6 sm:p-10">
+							<div className="grid grid-cols-2 items-center">
 								<Image
 									className="max-h-12 w-full object-contain"
-									src="/images/icons8-girl-running-60.png"
-									alt="circuit training lynda fit"
+									src={practice.icon.value}
+									alt={`${practice.icon.title} lynda fit`}
 									width={60}
 									height={60}
 								/>
 								<p className="text-2xl font-bold tracking-tight">
-									Circuit Training
+									{practice.name}
 								</p>
 							</div>
-							<p className="mt-2">
-								Séance collective dynamique où chaque participant travaille à sa
-								propre intensité et à son propre rythme, sur des ateliers cardio
-								et de renforcement visant un affinement et une tonification du
-								corps.
-							</p>
+							<p className="mt-2">{practice.description}</p>
 						</div>
-						<div className="bg-grayCust/40 p-6 sm:p-10">
-							<div className="grid grid-cols-2 items-center ">
-								<Image
-									className="max-h-12 w-full object-contain"
-									src="/images/icons8-fitnessBis-60.png"
-									alt="hiit lynda fit"
-									width={60}
-									height={60}
-								/>
-								<p className="text-2xl font-bold tracking-tight">HIIT</p>
-							</div>
-							<p className="mt-2">
-								Une séance courte et intense. A exercer à votre rythme pour
-								redessiner votre silhouette, effacer les petites rondeurs.
-							</p>
-						</div>
-					</div>
+					))}
 				</div>
 			</div>
 		</div>

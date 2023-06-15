@@ -3,41 +3,64 @@ import { defineType } from "sanity";
 export default defineType({
 	name: "training",
 	type: "document",
-	title: "Formations",
+	title: "Ma Formation",
 	fields: [
 		{
 			name: "title",
 			type: "string",
-			title: "Formation",
-			description: "Nom de la formation",
-            validation: (Rule) => Rule.required(),
+			title: "Titre",
+			validation: (Rule) => Rule.required(),
 		},
 		{
-			name: "description",
-			title: "Description",
+			name: "presentation",
 			type: "text",
+			title: "Présentation",
+			validation: (Rule) => Rule.required(),
 		},
 		{
-			name: "icon",
-			type: "string",
-			title: "Icone",
+			name: "backgroundImage",
+			type: "image",
+			title: "Image d'arrière-plan",
 			options: {
-				list: [
-					{ title: "Pilates", value: "/images/icons8-pilates-60.png" },
-					{ title: "Stretching", value: "/images/icons8-stratching-60.png" },
-					{ title: "Yogalates", value: "/images/icons8-yoga-60.png" },
-					{ title: "Total Silhouette", value: "/images/icons8-pushups-60.png" },
-					{ title: "Abdos Fessiers", value: "/images/icons8-sit-ups-60.png" },
-					{ title: "HIIT", value: "/images/icons8-fitnessBis-60.png" },
-					{
-						title: "Circuit Training",
-						value: "/images/icons8-girl-running-60.png",
-					},
-					// add more icons here
-				],
-				layout: "dropdown",
+				hotspot: true,
 			},
 			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: "formations",
+			type: "array",
+			title: "Formations",
+			of: [
+				{
+					type: "object",
+					fields: [
+						{
+							name: "title",
+							type: "string",
+							title: "Title",
+							validation: (Rule) => Rule.required(),
+						},
+						{
+							name: "description",
+							type: "text",
+							title: "Description",
+						},
+						{
+							name: "icon",
+							type: "reference",
+							title: "Icon",
+							to: [{ type: "icon" }],
+							validation: (Rule) => Rule.required(),
+						},
+					],
+				},
+			],
+		},
+		{
+			name: "diplomas",
+			type: "array",
+			title: "Diplomes",
+			of: [{ type: "reference", to: [{ type: "diploma" }] }],
 		},
 	],
 });

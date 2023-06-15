@@ -2,7 +2,7 @@ import { defineType } from "sanity";
 
 export default defineType({
     name: 'icon',
-    title: 'Icon',
+    title: 'Icones',
     type: 'document',
     fields: [
       {

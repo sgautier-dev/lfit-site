@@ -17,7 +17,7 @@ export default function Coaching() {
 
 			<div className="isolate mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
-					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl">
+					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl capitalize">
 						Le Coaching
 					</h2>
 					<p className="mt-6 text-lg">

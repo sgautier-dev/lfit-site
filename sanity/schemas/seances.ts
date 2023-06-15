@@ -1,8 +1,8 @@
 import { defineType } from "sanity";
 
 export default defineType({
-	name: "wellness",
-	title: "Bien-être",
+	name: "seances",
+	title: "Les séances",
 	type: "document",
 	fields: [
 		{
@@ -26,10 +26,10 @@ export default defineType({
 			},
 		},
 		{
-			name: "practices",
-			title: "Practices",
+			name: "schedule",
+			title: "le planning",
 			type: "array",
-			of: [{ type: "reference", to: { type: "practice" } }],
+			of: [{ type: "reference", to: { type: "schedule" } }],
 		},
 	],
 });

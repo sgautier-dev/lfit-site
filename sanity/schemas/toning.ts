@@ -6,6 +6,26 @@ export default defineType({
 	type: "document",
 	fields: [
 		{
+			name: "title",
+			type: "string",
+			title: "Titre",
+			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: "presentation",
+			type: "text",
+			title: "Présentation",
+			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: "backgroundImage",
+			type: "image",
+			title: "Image d'arrière-plan",
+			options: {
+				hotspot: true,
+			},
+		},
+		{
 			name: "practices",
 			title: "Practices",
 			type: "array",

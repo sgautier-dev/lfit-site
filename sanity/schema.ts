@@ -8,6 +8,10 @@ import wellness from "./schemas/wellness";
 import toning from "./schemas/toning";
 import refining from "./schemas/refining";
 import practice from "./schemas/practice";
+import hero from "./schemas/hero";
+import diploma from "./schemas/diploma";
+import cours from "./schemas/cours";
+import seances from "./schemas/seances";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
@@ -17,7 +21,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 		wellness,
 		toning,
 		refining,
-    practice,
+		practice,
+		hero,
+		diploma,
+		cours,
+		seances,
 		blockContent,
 	],
 };

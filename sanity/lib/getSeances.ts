@@ -1,9 +1,12 @@
 import { client } from "./client";
 import groq from "groq";
 
-const getSchedule = async (): Promise<Schedule[]> => {
-	const query = groq`*[_type == "schedule"]{
-      date,
+const getSeances = async (): Promise<Seance | Empty> => {
+	const query = groq`*[_type == "seances"]{
+		title,
+    	presentation,
+		"backgroundImage": backgroundImage.asset->url,
+      schedule[]->{date,
       "sessions": sessions[]{
         _id,
         start,
@@ -11,8 +14,8 @@ const getSchedule = async (): Promise<Schedule[]> => {
         course,
         description,
         icon
-      }
-    }`;
+      }}
+    }[0]`;
 
 	const daysOfWeek: Record<string, number> = {
 		Lundi: 1,
@@ -24,9 +27,13 @@ const getSchedule = async (): Promise<Schedule[]> => {
 		Dimanche: 7,
 	};
 
-	const schedule: Schedule[] = await client.fetch(query);
+	const data: Seance = await client.fetch(query);
 
-	const scheduleWithDuration = schedule.map((schedule) => ({
+	if (!data.schedule || data.schedule.length === 0) {
+		return { empty: true };
+	}
+
+	const schedulesWithDuration = data.schedule.map((schedule) => ({
 		...schedule,
 		sessions: schedule.sessions.map((session) => {
 			const [startHour, startMinute] = session.start.split(":").map(Number);
@@ -42,12 +49,17 @@ const getSchedule = async (): Promise<Schedule[]> => {
 		}),
 	}));
 
-	// Sort schedule by day of the week
-	scheduleWithDuration.sort((a, b) => {
+	// Sort schedules by day of the week
+	schedulesWithDuration.sort((a, b) => {
 		return daysOfWeek[a.date] - daysOfWeek[b.date];
 	});
 
-	return scheduleWithDuration;
+	const seanceWithDuration: Seance = {
+		...data,
+		schedule: schedulesWithDuration,
+	};
+
+	return seanceWithDuration;
 };
 
-export default getSchedule;
+export default getSeances;
