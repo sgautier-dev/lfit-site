@@ -27,35 +27,16 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		},
 		{
-			name: "formations",
-			type: "array",
-			title: "Formations",
+			name: 'formations',
+			title: 'Formations',
+			type: 'array',
 			of: [
-				{
-					type: "object",
-					fields: [
-						{
-							name: "title",
-							type: "string",
-							title: "Title",
-							validation: (Rule) => Rule.required(),
-						},
-						{
-							name: "description",
-							type: "text",
-							title: "Description",
-						},
-						{
-							name: "icon",
-							type: "reference",
-							title: "Icon",
-							to: [{ type: "icon" }],
-							validation: (Rule) => Rule.required(),
-						},
-					],
-				},
-			],
-		},
+			  {
+				type: 'reference',
+				to: [{type: 'formations'}]
+			  }
+			]
+		  },
 		{
 			name: "diplomas",
 			type: "array",

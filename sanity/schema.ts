@@ -3,6 +3,7 @@ import { type SchemaTypeDefinition } from "sanity";
 import blockContent from "./schemas/blockContent";
 import schedule from "./schemas/schedule";
 import formation from "./schemas/formation";
+import formations from "./schemas/formations";
 import icon from "./schemas/icon";
 import wellness from "./schemas/wellness";
 import toning from "./schemas/toning";
@@ -19,6 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
 		schedule,
 		formation,
+		formations,
 		icon,
 		wellness,
 		toning,

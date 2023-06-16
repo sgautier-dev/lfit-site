@@ -6,7 +6,7 @@ interface Base {
 }
 
 interface Empty {
-  empty: true;
+	empty: true;
 }
 
 type SocialType = {
@@ -75,13 +75,13 @@ interface Cours extends Base {
 	mainTitle: string;
 	presentation: string;
 	title: string;
-	text: BlockContent,
+	text: BlockContent;
 	backgroundImage: string;
 	secondaryImage: string;
 }
 
 interface Practice extends Base {
-  name: string;
+	name: string;
 	icon: Icon;
 	description: string;
 }
@@ -93,22 +93,21 @@ interface CoursSubSections extends Base {
 	practices: Practice[];
 }
 
-interface Seance extends Base  {
-  title: string;
-  presentation: string;
-  backgroundImage: string;
-  schedule: Schedule[];
+interface Seance extends Base {
+	title: string;
+	presentation: string;
+	backgroundImage: string;
+	schedule: Schedule[];
 }
 
 interface Coaching extends Base {
 	mainTitle: string;
 	presentation: string;
 	title: string;
-	text: BlockContent,
+	text: BlockContent;
 	backgroundImage: string;
 	secondaryImage: string;
 }
-
 
 interface Contact extends Base {
 	mainTitle: string;

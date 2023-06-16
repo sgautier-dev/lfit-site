@@ -6,7 +6,8 @@ const getFormation = async (): Promise<Training> => {
         title,
         presentation,
         "backgroundImage": backgroundImage.asset->url,
-        "formations": formations[]{
+        "formations": formations[]->{
+        _id,
         title, 
         description, 
         "icon": icon->{title, value}
