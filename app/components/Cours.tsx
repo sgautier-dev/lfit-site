@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { InView } from "react-intersection-observer";
 import getCours from "@/sanity/lib/getCours";
+import { PortableText } from "@portabletext/react";
 
 export default async function Cours() {
 	const cours = await getCours();
@@ -30,7 +31,9 @@ export default async function Cours() {
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
 					<div className="px-6">
 						<h3 className="text-xl font-bold tracking-tight">{cours.title}</h3>
-						<p className="mt-2 text-lg">{cours.text}</p>
+						<div className="mt-2 text-lg">
+							<PortableText value={cours.text} />
+						</div>
 						<a
 							href="#contact"
 							className="inline-flex items-center mt-4 rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust/80"

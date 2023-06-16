@@ -1,9 +1,9 @@
 import { defineType } from "sanity";
 
 export default defineType ({
-    name: "cours",
+    name: "coaching",
     type: "document",
-    title: "Mes Cours",
+    title: "Le coaching",
     fields: [
       {
         name: "mainTitle",

@@ -12,6 +12,8 @@ import hero from "./schemas/hero";
 import diploma from "./schemas/diploma";
 import cours from "./schemas/cours";
 import seances from "./schemas/seances";
+import coaching from "./schemas/coaching";
+import contact from "./schemas/contact";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
@@ -26,6 +28,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 		diploma,
 		cours,
 		seances,
+		coaching,
+		contact,
 		blockContent,
 	],
 };

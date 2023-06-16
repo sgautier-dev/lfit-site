@@ -30,7 +30,7 @@ export default async function Formation() {
 
 				{/* training cloud */}
 
-				<div className="mx-auto max-w-7xl px-6 lg:px-8">
+				<div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
 					<InView threshold={0.5} triggerOnce>
 						{({ inView, ref }) => (
 							<div ref={ref}>

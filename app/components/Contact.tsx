@@ -1,6 +1,8 @@
 import Image from "next/image";
+import getContact from "@/sanity/lib/getContact";
 
-export default function Contact() {
+export default async function Contact() {
+	const contact = await getContact();
 	return (
 		<div
 			className="relative isolate overflow-hidden pb-16 pt-14 sm:pb-20 mt-32 sm:mt-56 xl:mx-auto xl:max-w-7xl xl:px-8"
@@ -10,16 +12,13 @@ export default function Contact() {
 				<div className="relative overflow-hidden bg-gradient-to-r from-darkGrayCust to-pinkCust px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
 					<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
 						<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl capitalize">
-							Contactez moi
+							{contact.mainTitle}
 						</h2>
-						<p className="mt-6 text-lg text-white">
-							N&apos;hésitez pas à me rejoindre dans cet espace santé, sport et
-							bien être au quotidien.
-						</p>
+						<p className="mt-6 text-lg text-white">{contact.presentation}</p>
 					</div>
 					<div className="grid lg:grid-cols-2">
 						<Image
-							src="/images/contact_lyndafit-1824X1368.jpeg"
+							src={contact.image}
 							alt="Lynda votre coach fitness à la réunion"
 							width={330}
 							height={250}

@@ -15,6 +15,19 @@ type SocialType = {
 	icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 };
 
+interface BlockContent {
+	_type: "block" | "image";
+	style?: string;
+	list?: string;
+	marks?: {
+		decorators?: { title: string; value: string }[];
+		annotations?: Annotation[];
+	};
+	children?: BlockContent[];
+	alt?: string; // For 'image' type
+	asset?: Image;
+}
+
 interface Session extends Base {
 	start: string;
 	end: string;
@@ -62,7 +75,7 @@ interface Cours extends Base {
 	mainTitle: string;
 	presentation: string;
 	title: string;
-	text: string;
+	text: BlockContent,
 	backgroundImage: string;
 	secondaryImage: string;
 }
@@ -85,4 +98,20 @@ interface Seance extends Base  {
   presentation: string;
   backgroundImage: string;
   schedule: Schedule[];
+}
+
+interface Coaching extends Base {
+	mainTitle: string;
+	presentation: string;
+	title: string;
+	text: BlockContent,
+	backgroundImage: string;
+	secondaryImage: string;
+}
+
+
+interface Contact extends Base {
+	mainTitle: string;
+	presentation: string;
+	image: string;
 }
