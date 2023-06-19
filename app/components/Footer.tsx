@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Image from "next/image";
+import { BsArrowUpCircle } from "react-icons/bs";
 
 const social: SocialType[] = [
 	{
@@ -51,7 +52,12 @@ export default function Footer() {
 			<div className="mx-auto max-w-7xl px-6 py-6 md:flex md:items-center md:justify-between lg:px-8">
 				<div className="flex justify-center space-x-6 md:order-3">
 					{social.map((item) => (
-						<a key={item.name} href={item.href} className="hover:text-grayCust" target="_blank">
+						<a
+							key={item.name}
+							href={item.href}
+							className="hover:text-grayCust"
+							target="_blank"
+						>
 							<span className="sr-only">{item.name}</span>
 							<item.icon className="h-6 w-6" aria-hidden="true" />
 						</a>
@@ -69,7 +75,31 @@ export default function Footer() {
 						&copy; <span>{year}</span> L. FIT, Tous droits réservés.
 					</p>
 				</div>
+				<div>
+					<Image
+						src="/images/LogoRegionReunion.jpg"
+						alt="logo de la région réunion"
+						width={100}
+						height={80}
+						className="aspect-auto object-cover"
+					/>
+					<Image
+						src="/images/LogoUnionEuropeenne.jpg"
+						alt="logo union européenne"
+						width={100}
+						height={80}
+						className="aspect-auto object-cover"
+					/>
+				</div>
 			</div>
+
+			<a
+				href="#"
+				aria-label="back to top"
+				className="fixed right-4 bottom-40 md:bottom-20 opacity-80 hover:opacity-40 text-darkGrayCust"
+			>
+				<BsArrowUpCircle size={35} />
+			</a>
 		</footer>
 	);
 }

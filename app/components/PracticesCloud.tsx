@@ -11,7 +11,7 @@ const PracticesCloud: React.FC<PracticesProps> = ({ practices }) => {
 		<InView threshold={0.2} triggerOnce>
 			{({ inView, ref }) => (
 				<div ref={ref}>
-					<div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3 transition-transform duration-500">
+					<div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3">
 						{practices.map((practice) => (
 							<div
 								key={practice._id}
