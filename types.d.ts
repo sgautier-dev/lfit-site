@@ -1,3 +1,5 @@
+declare module 'intersection-observer';
+
 interface Base {
 	_id: string;
 	_type: string;
