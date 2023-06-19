@@ -29,7 +29,7 @@ export default async function Contact() {
 								<div>
 									<label
 										htmlFor="first-name"
-										className="block text-sm font-semibold leading-6 text-white"
+										className="block text-lg font-semibold leading-6 text-white"
 									>
 										Prénom
 									</label>
@@ -48,7 +48,7 @@ export default async function Contact() {
 								<div>
 									<label
 										htmlFor="last-name"
-										className="block text-sm font-semibold leading-6 text-white"
+										className="block text-lg font-semibold leading-6 text-white"
 									>
 										Nom
 									</label>
@@ -67,7 +67,7 @@ export default async function Contact() {
 								<div className="col-span-2">
 									<label
 										htmlFor="email"
-										className="block text-sm font-semibold leading-6 text-white"
+										className="block text-lg font-semibold leading-6 text-white"
 									>
 										E-mail
 									</label>
@@ -88,7 +88,7 @@ export default async function Contact() {
 									<div className="flex justify-between text-sm leading-6">
 										<label
 											htmlFor="message"
-											className="block text-sm font-semibold leading-6 text-white"
+											className="block text-lg font-semibold leading-6 text-white"
 										>
 											Message
 										</label>
@@ -110,7 +110,7 @@ export default async function Contact() {
 								</div>
 								<button
 									type="submit"
-									className="flex-none rounded-md bg-pinkCust px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
+									className="flex-none rounded-md bg-pinkCust px-3.5 py-2.5 text-sm font-days font-semibold text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
 								>
 									Envoyer
 								</button>

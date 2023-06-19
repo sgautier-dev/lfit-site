@@ -28,7 +28,16 @@ export default async function Planning() {
 					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl capitalize">
 						{seances.title}
 					</h2>
-					<p className="mt-6 text-lg">{seances.presentation}</p>
+					<div className="grid gap-8">
+						<p className="mt-6 text-lg">{seances.presentation}</p>
+						<a
+							href="https://www.supersaas.fr/schedule/wellness_beach_fitness/AGENDA"
+							className="ml-auto rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
+							target="_blank"
+						>
+							Réserver
+						</a>
+					</div>
 				</div>
 
 				{/* cloud */}
