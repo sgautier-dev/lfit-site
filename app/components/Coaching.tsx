@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import getCoaching from "@/sanity/lib/getCoaching";
-import { InView } from "react-intersection-observer";
+// import { InView } from "react-intersection-observer";
 
 export default async function Coaching() {
 	const coaching = await getCoaching();
@@ -30,7 +30,7 @@ export default async function Coaching() {
 				</div>
 
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
-					<InView threshold={0.5} triggerOnce>
+					{/* <InView threshold={0.5} triggerOnce>
 						{({ inView, ref }) => (
 							<Image
 								ref={ref}
@@ -43,7 +43,14 @@ export default async function Coaching() {
 								}`}
 							/>
 						)}
-					</InView>
+					</InView> */}
+					<Image
+						src={coaching.secondaryImage}
+						alt="Lynda votre coach fitness à la réunion"
+						width={200}
+						height={500}
+						className="mr-6 lg:mr-0 aspect-auto object-cover lg:justify-self-end rounded-xl lg:order-2"
+					/>
 					<div className="px-6 mt-6 lg:mt-0">
 						<h3 className="text-xl font-bold tracking-tight">
 							{coaching.title}

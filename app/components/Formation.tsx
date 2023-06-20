@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { InView } from "react-intersection-observer";
+// import { InView } from "react-intersection-observer";
 import getFormation from "@/sanity/lib/getFormation";
 
 export default async function Formation() {
@@ -31,7 +31,7 @@ export default async function Formation() {
 				{/* training cloud */}
 
 				<div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-					<InView threshold={0.5} triggerOnce>
+					{/* <InView threshold={0.5} triggerOnce>
 						{({ inView, ref }) => (
 							<div ref={ref}>
 								<div
@@ -59,7 +59,29 @@ export default async function Formation() {
 								</div>
 							</div>
 						)}
-					</InView>
+					</InView> */}
+
+					<div
+						className={`-mx-6 grid grid-cols-2 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-3 transition-transform duration-500`}
+					>
+						{formation.formations.map((item) => (
+							<div
+								className="grid grid-cols-2 items-center bg-grayCust/60 p-6 sm:p-10"
+								key={item._id}
+							>
+								<Image
+									className="max-h-12 w-full object-contain"
+									src={item.icon.value}
+									alt={item.icon.title}
+									width={60}
+									height={60}
+								/>
+								<p className="text-2xl font-bold tracking-tight uppercase">
+									{item.title}
+								</p>
+							</div>
+						))}
+					</div>
 
 					{/* diploma cloud */}
 					<div className="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-3 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-6">

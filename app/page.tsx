@@ -1,4 +1,4 @@
-import "intersection-observer"; //fallback polyfill in case of some older browser versions
+// import "intersection-observer"; //fallback polyfill in case of some older browser versions
 import Hero from "./components/Hero";
 import Formation from "./components/Formation";
 import Cours from "./components/Cours";

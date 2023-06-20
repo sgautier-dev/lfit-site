@@ -1,6 +1,6 @@
 import Image from "next/image";
 import getWellness from "@/sanity/lib/getWellness";
-import PracticesCloud from "./PracticesCloud";
+// import PracticesCloud from "./PracticesCloud";
 
 export default async function Wellness() {
 	const wellness = await getWellness();
@@ -26,7 +26,26 @@ export default async function Wellness() {
 
 				{/* cloud */}
 				<div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
-					<PracticesCloud practices={wellness.practices} />
+					{/* <PracticesCloud practices={wellness.practices} /> */}
+					<div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3">
+						{wellness.practices.map((practice) => (
+							<div key={practice._id} className="bg-grayCust/40 p-6 sm:p-10">
+								<div className="grid grid-cols-2 items-center">
+									<Image
+										className="max-h-12 w-full object-contain"
+										src={practice.icon.value}
+										alt={`${practice.icon.title} lynda fit`}
+										width={60}
+										height={60}
+									/>
+									<p className="text-2xl font-bold tracking-tight">
+										{practice.name}
+									</p>
+								</div>
+								<p className="mt-2">{practice.description}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

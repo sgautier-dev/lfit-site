@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { InView } from "react-intersection-observer";
+// import { InView } from "react-intersection-observer";
 import getCours from "@/sanity/lib/getCours";
 import { PortableText } from "@portabletext/react";
 
@@ -41,7 +41,7 @@ export default async function Cours() {
 							Me Contacter
 						</a>
 					</div>
-					<InView threshold={0.5} triggerOnce>
+					{/* <InView threshold={0.5} triggerOnce>
 						{({ inView, ref }) => (
 							<Image
 								ref={ref}
@@ -54,7 +54,14 @@ export default async function Cours() {
 								}`}
 							/>
 						)}
-					</InView>
+					</InView> */}
+					<Image
+						src={cours.secondaryImage}
+						alt="Lynda votre coach fitness à la réunion"
+						width={200}
+						height={500}
+						className="mr-6 lg:mr-0 mt-6 aspect-auto object-cover justify-self-end rounded-xl"
+					/>
 				</div>
 			</div>
 		</div>

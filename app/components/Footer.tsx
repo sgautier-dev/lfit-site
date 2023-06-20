@@ -80,19 +80,19 @@ export default function Footer() {
 						<Image
 							src="/images/LogoRegionReunion.jpg"
 							alt="logo de la région réunion"
-							width={100}
-							height={80}
+							width={80}
+							height={60}
 							className="aspect-auto object-cover"
 						/>
 						<Image
 							src="/images/LogoUnionEuropeenne.jpg"
 							alt="logo union européenne"
-							width={100}
-							height={80}
+							width={80}
+							height={60}
 							className="aspect-auto object-cover"
 						/>
 					</div>
-					<p className="text-center text-xs ">
+					<p className="text-center text-[10px] ">
 						Ce site a été financé avec l’aide du FEDER (REACT-UE), dans le cadre
 						de la réponse de l’Union européenne à la pandémie COVID-19. L’Europe
 						s’engage à La Réunion.
