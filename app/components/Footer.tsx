@@ -50,7 +50,7 @@ export default function Footer() {
 	return (
 		<footer className="md:sticky md:bottom-0 z-10 bg-darkGrayCust text-white">
 			<div className="mx-auto max-w-7xl px-6 py-6 md:flex md:items-center md:justify-between lg:px-8">
-				<div className="flex justify-center space-x-6 md:order-3">
+				<div className="flex justify-center space-x-6 md:order-4">
 					{social.map((item) => (
 						<a
 							key={item.name}
@@ -63,7 +63,7 @@ export default function Footer() {
 						</a>
 					))}
 				</div>
-				<div className="mt-3 md:order-2 md:mt-0">
+				<div className="mt-3 md:order-3 md:mt-0">
 					<a href="https://www.sgautier.dev/" target="_blank">
 						<p translate="no" className="text-center text-xs leading-5">
 							Designed by SG
@@ -75,7 +75,7 @@ export default function Footer() {
 						&copy; <span>{year}</span> L. FIT, Tous droits réservés.
 					</p>
 				</div>
-				<div>
+				<div className="grid grid-cols-2 gap-3 mt-3 md:order-2 md:mt-0">
 					<Image
 						src="/images/LogoRegionReunion.jpg"
 						alt="logo de la région réunion"
