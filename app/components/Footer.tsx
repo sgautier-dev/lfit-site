@@ -103,7 +103,7 @@ export default function Footer() {
 			<a
 				href="#"
 				aria-label="back to top"
-				className="fixed right-4 bottom-20 opacity-80 hover:opacity-40 text-darkGrayCust"
+				className="fixed right-4 bottom-10 opacity-80 hover:opacity-40 text-darkGrayCust"
 			>
 				<BsArrowUpCircle size={35} />
 			</a>
