@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import getCoaching from "@/sanity/lib/getCoaching";

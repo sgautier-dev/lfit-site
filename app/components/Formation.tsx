@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 // import { InView } from "react-intersection-observer";
 import getFormation from "@/sanity/lib/getFormation";

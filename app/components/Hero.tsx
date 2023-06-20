@@ -39,6 +39,7 @@ export default async function Hero() {
 				width={2400}
 				height={1595}
 				className="absolute inset-0 -z-10 aspect-[16/9] xl:aspect-[9/4] w-full object-cover"
+				priority
 			/>
 		</div>
 	);
