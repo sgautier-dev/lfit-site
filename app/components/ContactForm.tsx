@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect, FormEvent } from "react";
+import Script from "next/script";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 
 type ContactProp = {
-    contact: Contact;
-  };
-  
-export default async function ContactForm({ contact }: ContactProp) {
+	contact: Contact;
+};
 
+export default function ContactForm({ contact }: ContactProp) {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
@@ -16,6 +16,30 @@ export default async function ContactForm({ contact }: ContactProp) {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [submitMessage, setSubmitMessage] = useState<string>("Envoyer");
 	const [submitError, setSubmitError] = useState<string>("");
+
+	//hidding Google reCaptcha badge from page
+	useEffect(() => {
+		const style = document.createElement("style");
+		style.innerHTML = `
+		  .grecaptcha-badge {
+			visibility: hidden !important;
+		  }
+		`;
+		document.head.appendChild(style);
+	}, []);
+
+	const getRecaptchaToken = async () => {
+		try {
+			const token = await window.grecaptcha.execute(
+				process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+				{ action: "contact_form" }
+			);
+			return token;
+		} catch (error) {
+			console.error(error);
+			return null;
+		}
+	};
 
 	const validateEmail = (email: string) => {
 		const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -36,6 +60,54 @@ export default async function ContactForm({ contact }: ContactProp) {
 		setSubmitError("");
 		setIsSubmitting(true);
 		setSubmitMessage("Envoi en cours...");
+
+		const token = await getRecaptchaToken();
+		
+		if (!token) {
+			setSubmitError(
+				"Erreur lors de la vérification de sécurité. Veuillez réessayer."
+			);
+			setSubmitMessage("Envoyer");
+			setIsSubmitting(false);
+			return;
+		}
+
+		if (!validateEmail(email)) {
+			setSubmitError("Veuillez entrer une adresse e-mail valide.");
+			return;
+		}
+
+		try {
+			// sending email
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, firstName, lastName, message, token }),
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				setSubmitMessage(data.message);
+				resetForm();
+			} else {
+				throw new Error(
+					data.message || "Une erreur est survenue. Veuillez réessayer."
+				);
+			}
+
+			// throw new Error('test erreur')
+		} catch (error: any) {
+			console.error(error);
+			setSubmitError(error.message);
+		} finally {
+			setTimeout(() => {
+				setSubmitMessage("Envoyer");
+			}, 3000); // delay before resetting the submission message
+			setIsSubmitting(false);
+		}
 	};
 
 	return (
@@ -161,16 +233,16 @@ export default async function ContactForm({ contact }: ContactProp) {
 								>
 									{submitMessage}
 								</button>
+								{submitError && (
+									<div className="mt-2 text-sm sm:text-base flex items-center text-amber-300">
+										<ExclamationTriangleIcon
+											className="h-5 w-5"
+											aria-hidden="true"
+										/>
+										<p className="ml-2">{submitError}</p>
+									</div>
+								)}
 							</div>
-							{submitError && (
-								<div className="mt-2 text-sm sm:text-base flex items-center text-orange">
-									<ExclamationTriangleIcon
-										className="h-5 w-5"
-										aria-hidden="true"
-									/>
-									<p className="ml-2">{submitError}</p>
-								</div>
-							)}
 						</form>
 					</div>
 					<svg
@@ -201,6 +273,9 @@ export default async function ContactForm({ contact }: ContactProp) {
 					</svg>
 				</div>
 			</div>
+			<Script
+				src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+			/>
 		</div>
 	);
 }

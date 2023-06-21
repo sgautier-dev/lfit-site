@@ -1,4 +1,8 @@
-declare module 'intersection-observer';
+// declare module 'intersection-observer';
+
+interface Window {
+	grecaptcha: ReCaptchaInstance;
+}
 
 interface Base {
 	_id: string;
