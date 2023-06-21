@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 			to: process.env.SMTP_USER,
 			replyTo: `${firstName} ${lastName} <${email}>`,
 			subject: "Nouveau message du site L.FIT",
-			text: message,
+			text: `Vous avez reçu un message de ${firstName} ${lastName} <${email}>:\n${message}`,
 		});
 
 		return NextResponse.json(
