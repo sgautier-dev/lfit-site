@@ -15,6 +15,7 @@ export default async function Formation() {
 				alt="Lynda votre coach fitness à la réunion"
 				width={2002}
 				height={1907}
+				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
@@ -90,8 +91,8 @@ export default async function Formation() {
 									className="col-span-2 max-h-32 w-full object-contain lg:col-span-1"
 									src={item.image}
 									alt={item.title}
-									width={200}
-									height={100}
+									width={248}
+									height={224}
 								/>
 							</div>
 						))}

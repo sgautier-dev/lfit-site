@@ -1,6 +1,5 @@
 import Image from "next/image";
 import getHero from "@/sanity/lib/getHero";
-import backgroundImage from '../../public/images/sean-oulashin-KMn4VEeEPR8-unsplash-2400X1595.jpg'
 
 export default async function Hero() {
 	const hero = await getHero();
@@ -36,8 +35,10 @@ export default async function Hero() {
 			</div>
 
 			<Image
-				src={backgroundImage}
+				src="/images/sean-oulashin-KMn4VEeEPR8-unsplash-2400X1595.jpg"
 				alt="votre coach fitness sur la plage, ermitage la réunion"
+				width={2002}
+				height={1907}
 				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
 				className="absolute inset-0 -z-10 aspect-[16/9] xl:aspect-[9/4] w-full object-cover"
 				priority

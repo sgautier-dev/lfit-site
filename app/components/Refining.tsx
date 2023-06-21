@@ -11,6 +11,7 @@ export default async function Refining() {
 				alt="Lynda votre coach fitness à la réunion"
 				width={2400}
 				height={1655}
+				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
