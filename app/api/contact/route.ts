@@ -2,19 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import logger from "@/lib/logger";
 const nodemailer = require("nodemailer");
 
+if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.RECAPTCHA_SECRET_KEY) {
+	throw new Error("Missing required environment variables");
+}
+
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
 	host: process.env.SMTP_HOST,
 	port: process.env.SMTP_PORT,
-	secure: false, // true for 465, false for other ports
-	tls: {
-		ciphers: "SSLv3",
-		rejectUnauthorized: false,
-	},
+	secure: process.env.SMTP_PORT == "465", // true for 465, false for other ports
 	auth: {
-		user: process.env.SMTP_USER, // SMTP username
-		pass: process.env.SMTP_PASS, // SMTP password
+		user: process.env.SMTP_USER,
+		pass: process.env.SMTP_PASS,
 	},
+	// logger: true, //in dev for debugging
+	// debug: true, // include SMTP traffic in the logs
 });
 
 export async function POST(req: NextRequest) {
@@ -22,7 +24,7 @@ export async function POST(req: NextRequest) {
 
 	const verifyRecaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`;
 
-	// console.log('data: ',`${firstName} ${lastName} ${email} ${message}`)
+	// console.log("data: ", `${firstName} ${lastName} ${email} ${message}`);
 
 	if (!email || !firstName || !lastName || !message)
 		return NextResponse.json(
