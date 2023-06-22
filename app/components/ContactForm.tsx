@@ -62,7 +62,7 @@ export default function ContactForm({ contact }: ContactProp) {
 		setSubmitMessage("Envoi en cours...");
 
 		const token = await getRecaptchaToken();
-		
+
 		if (!token) {
 			setSubmitError(
 				"Erreur lors de la vérification de sécurité. Veuillez réessayer."
