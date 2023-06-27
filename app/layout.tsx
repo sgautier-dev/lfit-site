@@ -49,7 +49,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="fr" className={`${exo.variable} ${days.variable} ${vibes.variable} ${caramel.variable} ${judson.variable}`}>
+		<html lang="fr" className={`${exo.variable} ${days.variable} ${vibes.variable} ${caramel.variable} ${judson.variable} sm:scroll-smooth`}>
 			<body className="bg-white">
 				<Header />
 				{children}
