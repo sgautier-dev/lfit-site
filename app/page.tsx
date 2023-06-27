@@ -1,3 +1,4 @@
+// import "intersection-observer"; //fallback polyfill in case of some older browser versions
 import Hero from "./components/Hero";
 import Formation from "./components/Formation";
 import Cours from "./components/Cours";
@@ -10,7 +11,7 @@ import Planning from "./components/Planning";
 
 export default function Home() {
 	return (
-		<main className="mx-auto min-h-screen font-judson">
+		<main className="relative mx-auto min-h-screen font-judson">
 			<Hero />
 			<Formation />
 			<Cours />

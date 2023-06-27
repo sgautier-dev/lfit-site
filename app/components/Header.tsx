@@ -37,6 +37,7 @@ export default function Header() {
 				<div className="flex flex-1 items-center justify-end gap-x-6">
 					<a
 						href={`tel:+262692799392`}
+						aria-label="Appelez Lynda Fit"
 						className="hover:scale-125 hover:opacity-80 transition"
 					>
 						<svg

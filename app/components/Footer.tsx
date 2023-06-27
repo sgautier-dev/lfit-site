@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Image from "next/image";
+import { BsArrowUpCircle } from "react-icons/bs";
 
 const social: SocialType[] = [
 	{
@@ -47,29 +48,65 @@ export default function Footer() {
 	const year = today.getFullYear().toString();
 
 	return (
-		<footer className="md:sticky md:bottom-0 z-10 bg-darkGrayCust text-white">
-			<div className="mx-auto max-w-7xl px-6 py-6 md:flex md:items-center md:justify-between lg:px-8">
-				<div className="flex justify-center space-x-6 md:order-3">
+		<footer className="z-10 bg-darkGrayCust text-white">
+			<div className="mx-auto max-w-7xl px-6 py-6 md:grid md:grid-cols-4 md:items-center md:justify-between lg:px-8">
+				<div className="flex justify-center space-x-6 md:order-4">
 					{social.map((item) => (
-						<a key={item.name} href={item.href} className="hover:text-grayCust" target="_blank">
+						<a
+							key={item.name}
+							href={item.href}
+							className="hover:text-grayCust"
+							target="_blank"
+						>
 							<span className="sr-only">{item.name}</span>
 							<item.icon className="h-6 w-6" aria-hidden="true" />
 						</a>
 					))}
 				</div>
-				<div className="mt-3 md:order-2 md:mt-0">
+				<div className="mt-3 md:order-2">
 					<a href="https://www.sgautier.dev/" target="_blank">
 						<p translate="no" className="text-center text-xs leading-5">
 							Designed by SG
 						</p>
 					</a>
 				</div>
-				<div className="mt-3 md:order-1 md:mt-0">
+				<div className="mt-3 md:order-1">
 					<p className="text-center text-xs leading-5">
 						&copy; <span>{year}</span> L. FIT, Tous droits réservés.
 					</p>
 				</div>
+				<div className="mt-3 grid gap-3 items-center md:order-3">
+					<div className="flex items-center justify-center gap-3">
+						<Image
+							src="/images/LogoRegionReunion.jpg"
+							alt="logo de la région réunion"
+							width={80}
+							height={60}
+							className="aspect-auto object-cover"
+						/>
+						<Image
+							src="/images/LogoUnionEuropeenne.jpg"
+							alt="logo union européenne"
+							width={80}
+							height={60}
+							className="aspect-auto object-cover"
+						/>
+					</div>
+					<p className="text-center text-[10px] ">
+						Ce site a été financé avec l’aide du FEDER (REACT-UE), dans le cadre
+						de la réponse de l’Union européenne à la pandémie COVID-19. L’Europe
+						s’engage à La Réunion.
+					</p>
+				</div>
 			</div>
+
+			<a
+				href="#"
+				aria-label="back to top"
+				className="fixed right-4 bottom-10 opacity-80 hover:opacity-40 text-darkGrayCust"
+			>
+				<BsArrowUpCircle size={35} />
+			</a>
 		</footer>
 	);
 }

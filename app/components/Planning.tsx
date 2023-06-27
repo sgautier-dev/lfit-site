@@ -1,41 +1,60 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import getSchedule from "@/sanity/lib/getSchedule";
+import getSeances from "@/sanity/lib/getSeances";
 
 export default async function Planning() {
-	const schedule = await getSchedule();
+	const seances = await getSeances();
+
+	if ("empty" in seances) {
+		// notFound();
+		throw new Error("oups pas de donnée");
+	}
 	return (
 		<div
 			className="relative isolate overflow-hidden pb-16 pt-14 sm:pb-20 mt-32 sm:mt-56 xl:mx-auto xl:max-w-7xl xl:px-8"
 			id="planning"
 		>
 			<Image
-				src="/images/cours_plage_lyndafit-2097X2072.jpg"
+				src={seances.backgroundImage}
 				alt="Lynda votre coach fitness à la réunion"
 				width={2097}
 				height={2072}
+				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
 
 			<div className="isolate mx-auto max-w-7xl px-6 lg:px-8">
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
-					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl">
-						Les Séances sur la Plage
+					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl capitalize">
+						{seances.title}
 					</h2>
-					<p className="mt-6 text-lg">Un programme qui évolue avec vous.</p>
+					<div className="grid gap-8">
+						<p className="mt-6 text-lg">{seances.presentation}</p>
+						<a
+							href="https://www.supersaas.fr/schedule/wellness_beach_fitness/AGENDA"
+							className="ml-auto rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
+							target="_blank"
+						>
+							Réserver
+						</a>
+					</div>
 				</div>
 
-				<div className="mx-auto max-w-7xl px-6 lg:px-8">
+				{/* cloud */}
+				<div className="mx-auto max-w-7xl px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
 					<div className="-mx-6 grid grid-cols-1 gap-0.5 overflow-hidden sm:mx-0 sm:rounded-2xl md:grid-cols-2 lg:grid-cols-3">
-						{schedule.map((day) => (
+						{seances.schedule.map((day) => (
 							<Fragment key={day.date}>
 								<div className="bg-grayCust/40 p-6 sm:p-10">
 									<p className="text-2xl text-left font-bold tracking-tight">
 										{day.date}
 									</p>
 									{day.sessions.map((session) => (
-										<div className="mt-4 flex gap-x-6 text-lg" key={session._id}>
+										<div
+											className="mt-4 flex gap-x-6 text-lg"
+											key={`${session.course}-${session.start}-${session.end}`}
+										>
 											<Image
 												className="object-contain"
 												src={session.icon}
@@ -50,12 +69,16 @@ export default async function Planning() {
 													<div className="font-medium leading-6 text-black">
 														{session.course}
 													</div>
-
-													<div className="mt-1 font-medium leading-5  text-pinkCust">
-														{session.start}
-														{"-"}
-														{session.end}
-														<div className="h-px w-full bg-darkGrayCust/50" />
+													<div className="flex gap-x-3">
+														<div className="mt-1 font-medium leading-5  text-pinkCust">
+															{session.start}
+															{"-"}
+															{session.end}
+															<div className="h-px w-full bg-darkGrayCust/50" />
+														</div>
+														<div className="rounded-md py-1 px-2 text-sm font-medium ring-1 ring-inset ring-pinkCust">
+															{session.duration} mins
+														</div>
 													</div>
 												</div>
 											</div>

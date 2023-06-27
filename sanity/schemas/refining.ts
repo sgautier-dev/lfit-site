@@ -1,9 +1,9 @@
 import { defineType } from "sanity";
 
 export default defineType({
-	name: "training",
+	name: "refining",
+	title: "S'affiner",
 	type: "document",
-	title: "Ma Formation",
 	fields: [
 		{
 			name: "title",
@@ -24,24 +24,12 @@ export default defineType({
 			options: {
 				hotspot: true,
 			},
-			validation: (Rule) => Rule.required(),
 		},
 		{
-			name: 'formations',
-			title: 'Formations',
-			type: 'array',
-			of: [
-			  {
-				type: 'reference',
-				to: [{type: 'formations'}]
-			  }
-			]
-		  },
-		{
-			name: "diplomas",
+			name: "practices",
+			title: "Practices",
 			type: "array",
-			title: "Diplomes",
-			of: [{ type: "reference", to: [{ type: "diploma" }] }],
+			of: [{ type: "reference", to: { type: "practice" } }],
 		},
 	],
 });

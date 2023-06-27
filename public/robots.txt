@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.lfit.pro
+
+# Sitemaps
+Sitemap: https://www.lfit.pro/sitemap.xml
