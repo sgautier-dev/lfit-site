@@ -15,6 +15,7 @@ import cours from "./schemas/cours";
 import seances from "./schemas/seances";
 import coaching from "./schemas/coaching";
 import contact from "./schemas/contact";
+import videos from "./schemas/videos";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
 	types: [
@@ -32,6 +33,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 		seances,
 		coaching,
 		contact,
+		videos,
 		blockContent,
 	],
 };
