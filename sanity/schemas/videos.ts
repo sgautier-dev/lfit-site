@@ -11,18 +11,18 @@ export default defineType({
 			type: "string",
 			validation: (Rule) => Rule.required(),
 		},
-        {
+		{
 			name: "length",
 			title: "Durée de la vidéo",
 			type: "string",
-            description: "Format: XX mins",
+			description: "Format: XX mins",
 			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: "description",
 			title: "Description",
 			type: "text",
-            validation: (Rule) => Rule.required(),
+			validation: (Rule) => Rule.required(),
 		},
 		defineField({
 			name: "video",
@@ -38,4 +38,17 @@ export default defineType({
 			validation: (Rule) => Rule.required(),
 		}),
 	],
+	preview: {
+		select: {
+			title: "title",
+			length: "length",
+		},
+		prepare(selection) {
+			const { title, length } = selection;
+			return {
+				title: title,
+				subtitle: `Durée: ${length}`,
+			};
+		},
+	},
 });
