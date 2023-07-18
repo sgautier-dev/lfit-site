@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { navigation } from "@/lib/navigation";
+import Link from "next/link";
 
 export default function Header() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,14 +25,14 @@ export default function Header() {
 				</div>
 				<div className="hidden lg:flex lg:gap-x-12">
 					{navigation.map((item) => (
-						<a
+						<Link
 							key={item.name}
 							href={item.href}
 							className="text-sm font-days leading-6 relative group"
 						>
 							{item.name}
 							<span className="absolute inset-x-0 bottom-0 h-1 mt-1 transform scale-x-0 group-hover:scale-x-100 transition duration-200 ease-out origin-left bg-pinkCust"></span>
-						</a>
+						</Link>
 					))}
 				</div>
 				<div className="flex flex-1 items-center justify-end gap-x-6">
@@ -54,8 +55,8 @@ export default function Header() {
 						</svg>
 					</a>
 
-					<a
-						href="#"
+					<Link
+						href="/members"
 						className="hidden lg:block hover:scale-125 hover:opacity-80 transition"
 					>
 						<svg
@@ -70,7 +71,7 @@ export default function Header() {
 								clipRule="evenodd"
 							/>
 						</svg>
-					</a>
+					</Link>
 					<a
 						href="#"
 						className="rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
@@ -128,20 +129,21 @@ export default function Header() {
 						<div className="-my-6 divide-y divide-grayCust/30">
 							<div className="space-y-2 py-6">
 								{navigation.map((item) => (
-									<a
+									<Link
 										key={item.name}
 										href={item.href}
 										className="-mx-3 block rounded-lg px-3 py-2 text-base font-days leading-7 text-darkGrayCust hover:bg-grayCust/30"
 										onClick={() => setMobileMenuOpen(false)}
 									>
 										{item.name}
-									</a>
+									</Link>
 								))}
 							</div>
 							<div className="py-6">
-								<a
-									href="#"
+								<Link
+									href="/members"
 									className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-grayCust/30"
+									onClick={() => setMobileMenuOpen(false)}
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +157,7 @@ export default function Header() {
 											clipRule="evenodd"
 										/>
 									</svg>
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>

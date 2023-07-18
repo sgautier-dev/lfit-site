@@ -120,3 +120,12 @@ interface Contact extends Base {
 	presentation: string;
 	image: string;
 }
+
+interface Video extends Base  {
+    title: string;
+    length: string;
+    description: string;
+    videoUrl: string;
+    category: string;
+    access: string;
+}
