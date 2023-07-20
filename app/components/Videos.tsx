@@ -2,7 +2,7 @@
 import CategoryFilter from "./CategoryFilter";
 import { useState, useMemo } from "react";
 import { ALL_CATEGORIES_LABEL } from "@/lib/constants";
-import { ShoppingCartIcon, LockClosedIcon } from "@heroicons/react/24/solid";
+import { LockOpenIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 
 interface VideosProps {
 	videos: Video[];
@@ -31,7 +31,7 @@ export default function Videos({ videos }: VideosProps) {
 					setSelectedCategory={setSelectedCategory}
 				/>
 
-				<ShoppingCartIcon className="h-8 w-8 text-pinkCust" />
+				<LockOpenIcon className="h-8 w-8 text-pinkCust" />
 			</div>
 			<div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
 				{filteredVideos.map((video) => (

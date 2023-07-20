@@ -15,13 +15,13 @@ export default function Header() {
 				aria-label="Global"
 			>
 				<div className="flex lg:flex-1">
-					<a
-						href="#"
+					<Link
+						href="/"
 						className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust"
 					>
 						<span className="sr-only">Lynda FIT</span>
 						<p>L. FIT</p>
-					</a>
+					</Link>
 				</div>
 				<div className="hidden lg:flex lg:gap-x-12">
 					{navigation.map((item) => (
@@ -99,14 +99,14 @@ export default function Header() {
 				<div className="fixed inset-0 z-10" />
 				<Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-grayCust">
 					<div className="flex items-center gap-x-6">
-						<a
-							href="#"
+						<Link
+							href="/"
 							className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust"
 							onClick={() => setMobileMenuOpen(false)}
 						>
 							<span className="sr-only">Lynda FIT</span>
 							<p>L. FIT</p>
-						</a>
+						</Link>
 						<a
 							href="#"
 							className="ml-auto rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
