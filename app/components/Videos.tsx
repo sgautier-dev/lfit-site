@@ -2,7 +2,7 @@
 import CategoryFilter from "./CategoryFilter";
 import { useState, useMemo } from "react";
 import { ALL_CATEGORIES_LABEL } from "@/lib/constants";
-import { VideoCameraIcon } from "@heroicons/react/24/solid";
+import { ShoppingCartIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 
 interface VideosProps {
 	videos: Video[];
@@ -30,7 +30,8 @@ export default function Videos({ videos }: VideosProps) {
 					selectedCategory={selectedCategory}
 					setSelectedCategory={setSelectedCategory}
 				/>
-				<VideoCameraIcon className="h-6 w-6 text-pinkCust" />
+
+				<ShoppingCartIcon className="h-8 w-8 text-pinkCust" />
 			</div>
 			<div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
 				{filteredVideos.map((video) => (
@@ -40,6 +41,12 @@ export default function Videos({ videos }: VideosProps) {
 								<source src={video.videoUrl} type="video/mp4" />
 								Votre navigateur ne prend pas en charge le lecteur vidéo.
 							</video>
+							{video.access !== "free" && (
+								<LockClosedIcon
+									className="absolute h-full w-full object-cover object-center text-pinkCust"
+									aria-hidden="true"
+								/>
+							)}
 						</div>
 						<div className="mt-4 flex items-center justify-between space-x-8 text-base font-medium text-pinkCust">
 							<h3>{video.title}</h3>

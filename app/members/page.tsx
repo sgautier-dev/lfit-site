@@ -24,9 +24,8 @@ export default async function Members() {
 					<p className="mt-6 text-lg">
 						Ici, le sport ne s&apos;arrête jamais. Profitez de vos séances
 						d&apos;entraînement préférées - Stretching, Pilates, Yogalates,
-						Cardio et plus encore - à tout moment, n&apos;importe où. Ne laissez
-						jamais vos vacances interrompre votre rythme, restez en forme avec
-						LFIT. Bon entrainement!
+						Cardio et plus encore - à tout moment, n&apos;importe où.  <span className="underline  ">Abonnez-vous pour profiter de toutes les vidéos</span> , restez en forme avec
+						LFIT. Bon entrainement !
 					</p>
 				</div>
 				<Videos videos={videos} />
