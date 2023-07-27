@@ -6,13 +6,13 @@ export default async function Members() {
 	const videos = await getVideos();
 
 	return (
-		<main className="relative mx-auto min-h-screen font-judson">
+		<main className="relative mx-auto min-h-screen font-judson xl:mx-auto xl:max-w-7xl xl:px-8">
 			<Image
 				src="/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg"
 				alt="Lynda votre coach fitness à la réunion"
 				width={1920}
 				height={1280}
-				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
+				sizes="(min-width: 1360px) 1280px, calc(94.23vw + 17px)"
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
