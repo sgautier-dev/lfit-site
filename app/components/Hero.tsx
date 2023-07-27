@@ -39,7 +39,7 @@ export default async function Hero() {
 				alt="votre coach fitness sur la plage, ermitage la réunion"
 				width={2002}
 				height={1907}
-				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
+				sizes="(min-width: 1360px) 1280px, calc(94.23vw + 17px)"
 				className="absolute inset-0 -z-10 aspect-[16/9] xl:aspect-[9/4] w-full object-cover"
 				priority
 			/>

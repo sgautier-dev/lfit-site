@@ -16,7 +16,7 @@ export default async function Coaching() {
 				alt="Lynda votre coach fitness à la réunion"
 				width={2400}
 				height={1803}
-				sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
+				sizes="(min-width: 1360px) 1280px, calc(94.23vw + 17px)"
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
