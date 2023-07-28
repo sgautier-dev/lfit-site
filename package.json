@@ -12,6 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
+    "@kinde-oss/kinde-auth-nextjs": "^1.8.10",
     "@portabletext/react": "^3.0.4",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.14.4",
