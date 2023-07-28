@@ -1,7 +1,14 @@
 import "./globals.css";
 import Header from "./components/Header";
-import { Exo_2, Days_One, Great_Vibes, Caramel, Judson } from "next/font/google";
+import {
+	Exo_2,
+	Days_One,
+	Great_Vibes,
+	Caramel,
+	Judson,
+} from "next/font/google";
 import Footer from "./components/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const exo = Exo_2({
 	subsets: ["latin"],
@@ -39,7 +46,8 @@ const judson = Judson({
 
 export const metadata = {
 	title: "L.FIT - Votre Coach Fitness à La Réunion",
-	description: "Lynda, coach sportive certifiée à La Réunion, propose des séances de fitness adaptées pour tous les niveaux. Découvrez votre potentiel et sentez-vous bien dans votre corps",
+	description:
+		"Lynda, coach sportive certifiée à La Réunion, propose des séances de fitness adaptées pour tous les niveaux. Découvrez votre potentiel et sentez-vous bien dans votre corps",
 	authors: [{ name: "Sébastien Gautier", url: "https://www.sgautier.dev" }],
 };
 
@@ -49,12 +57,17 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="fr" className={`${exo.variable} ${days.variable} ${vibes.variable} ${caramel.variable} ${judson.variable}`}>
-			<body className="bg-white">
-				<Header />
-				{children}
-				<Footer />
-			</body>
-		</html>
+		<ClerkProvider>
+			<html
+				lang="fr"
+				className={`${exo.variable} ${days.variable} ${vibes.variable} ${caramel.variable} ${judson.variable}`}
+			>
+				<body className="bg-white">
+					<Header />
+					{children}
+					<Footer />
+				</body>
+			</html>
+		</ClerkProvider>
 	);
 }

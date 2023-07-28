@@ -28,7 +28,7 @@ export default function MobileMenu() {
 			>
 				<div className="fixed inset-0 z-10" />
 				<Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-grayCust">
-					<div className="flex items-center gap-x-6">
+					<div className="flex items-center justify-between gap-x-6">
 						<Link
 							href="/"
 							className="-m-1.5 p-1.5 font-exo font-black text-4xl text-pinkCust"
@@ -37,12 +37,12 @@ export default function MobileMenu() {
 							<span className="sr-only">Lynda FIT</span>
 							<p>L. FIT</p>
 						</Link>
-						<a
+						{/* <a
 							href="#"
 							className="ml-auto rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust"
 						>
 							S&apos;inscrire
-						</a>
+						</a> */}
 						<button
 							type="button"
 							className="-m-2.5 rounded-md p-2.5 text-darkGrayCust"
@@ -69,7 +69,7 @@ export default function MobileMenu() {
 									</Link>
 								))}
 							</div>
-							<div className="py-6">
+							{/* <div className="py-6">
 								<Link
 									href="/members"
 									className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-grayCust/30"
@@ -88,7 +88,7 @@ export default function MobileMenu() {
 										/>
 									</svg>
 								</Link>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</Dialog.Panel>
