@@ -24,9 +24,18 @@ export default async function Members() {
 					<p className="mt-6 text-lg">
 						Ici, le sport ne s&apos;arrête jamais. Profitez de vos séances
 						d&apos;entraînement préférées - Stretching, Pilates, Yogalates,
-						Cardio et plus encore - à tout moment, n&apos;importe où.  <span className="underline  ">Abonnez-vous pour profiter de toutes les vidéos</span> , restez en forme avec
-						LFIT. Bon entrainement !
+						Cardio et plus encore - à tout moment, n&apos;importe où. Restez
+						en forme avec LFIT. <br /> Bon entrainement !
 					</p>
+				</div>
+				<div className="hidden sm:flex sm:justify-center">
+					<div className="relative rounded-full px-3 py-1 text-lg leading-6 ring-2 ring-pinkCust/50 hover:ring-pinkCust">
+						Abonnez-vous pour profiter de toutes les vidéos.{" "}
+						<a href="#" className="font-semibold text-pinkCust">
+							<span className="absolute inset-0" aria-hidden="true" />
+							<span aria-hidden="true">&rarr;</span>
+						</a>
+					</div>
 				</div>
 				<Videos videos={videos} />
 			</div>

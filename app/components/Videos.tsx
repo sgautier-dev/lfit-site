@@ -23,7 +23,7 @@ export default function Videos({ videos }: VideosProps) {
 			: videos.filter((video) => video.category === selectedCategory);
 
 	return (
-		<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+		<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-20 lg:max-w-7xl lg:px-8">
 			<div className="flex items-center justify-between space-x-4">
 				<CategoryFilter
 					uniqueCategories={uniqueCategories}
