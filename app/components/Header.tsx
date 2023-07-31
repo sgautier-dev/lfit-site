@@ -7,6 +7,7 @@ import {
 	LoginLink,
 	LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/server";
+import { UserButton, SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import MobileMenu from "./MobileMenu";
 import AuthIcons from "./AuthIcons";
 
@@ -93,6 +94,17 @@ export default function Header() {
 							</LogoutLink>
 						</>
 					)}
+					<div className="text-pinkCust">
+						<SignedIn>
+							{/* Mount the UserButton component */}
+							<UserButton afterSignOutUrl="/" />
+						</SignedIn>
+
+						<SignedOut>
+							{/* Signed out users get sign in button */}
+							<SignInButton />
+						</SignedOut>
+					</div>
 
 					{/* <a
 						href="#"
