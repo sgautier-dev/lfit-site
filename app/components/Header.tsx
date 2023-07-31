@@ -8,6 +8,7 @@ import {
 	LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/server";
 import MobileMenu from "./MobileMenu";
+import AuthIcons from "./AuthIcons";
 
 export default function Header() {
 	const { isAuthenticated, getUser } = getKindeServerSession();
@@ -82,9 +83,7 @@ export default function Header() {
 						</>
 					) : (
 						<>
-							<p className="text-pinkCust text-lg font-days leading-6">
-								{user ? user.given_name : "joe"}
-							</p>
+							<AuthIcons userGivenName={user?.given_name} />
 							<LogoutLink className=" text-pinkCust shadow-sm hover:scale-125 hover:opacity-80 transition ">
 								<span className="sr-only">se déconnecter</span>
 								<ArrowLeftOnRectangleIcon
