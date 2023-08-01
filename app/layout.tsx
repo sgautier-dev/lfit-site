@@ -9,6 +9,7 @@ import {
 } from "next/font/google";
 import Footer from "./components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import { frFR } from "@clerk/localizations";
 
 const exo = Exo_2({
 	subsets: ["latin"],
@@ -57,7 +58,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<ClerkProvider>
+		<ClerkProvider localization={frFR}>
 			<html
 				lang="fr"
 				className={`${exo.variable} ${days.variable} ${vibes.variable} ${caramel.variable} ${judson.variable}`}

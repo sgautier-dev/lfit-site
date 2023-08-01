@@ -1,19 +1,25 @@
 import { navigation } from "@/lib/navigation";
 import Link from "next/link";
 import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/solid";
+// import {
+// 	getKindeServerSession,
+// 	RegisterLink,
+// 	LoginLink,
+// 	LogoutLink,
+// } from "@kinde-oss/kinde-auth-nextjs/server";
 import {
-	getKindeServerSession,
-	RegisterLink,
-	LoginLink,
-	LogoutLink,
-} from "@kinde-oss/kinde-auth-nextjs/server";
-import { UserButton, SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+	UserButton,
+	SignedIn,
+	SignedOut,
+	SignInButton,
+	SignUpButton,
+} from "@clerk/nextjs";
 import MobileMenu from "./MobileMenu";
 import AuthIcons from "./AuthIcons";
 
 export default function Header() {
-	const { isAuthenticated, getUser } = getKindeServerSession();
-	const user = getUser();
+	// const { isAuthenticated, getUser } = getKindeServerSession();
+	// const user = getUser();
 
 	return (
 		<header className="sticky top-0 z-10 bg-darkGrayCust text-white">
@@ -62,7 +68,7 @@ export default function Header() {
 						</svg>
 					</a>
 
-					{!isAuthenticated() ? (
+					{/* {!isAuthenticated() ? (
 						<>
 							<LoginLink className="hover:scale-125 hover:opacity-80 transition">
 								<svg
@@ -93,7 +99,8 @@ export default function Header() {
 								/>
 							</LogoutLink>
 						</>
-					)}
+					)} */}
+
 					<div className="text-pinkCust">
 						<SignedIn>
 							{/* Mount the UserButton component */}
