@@ -16,7 +16,7 @@ export default async function Members() {
 				className="absolute inset-0 -z-10 h-full w-full object-cover"
 			/>
 			<div className="absolute inset-0 bg-white opacity-80"></div>
-			<div className="isolate mx-auto max-w-7xl py-14 px-6 lg:px-8">
+			<div className="isolate mx-auto max-w-7xl py-6 px-6 lg:px-8">
 				<div className="py-8 sm:py-10 lg:py-12 grid lg:grid-cols-2 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
 					<h2 className="text-4xl font-days tracking-tight text-pinkCust sm:text-5xl lg:text-6xl capitalize">
 						Espace membres
