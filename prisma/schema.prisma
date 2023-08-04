@@ -10,3 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Payment {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ObjectID
+  paymentId   String    // Stripe payment ID
+  userId      String    // ID from Clerk for the associated user
+  status      String    // Status of the payment, e.g., "successful"
+  createdAt   DateTime  @default(now()) // Date and time of the creation of the payment
+  updatedAt   DateTime  @updatedAt // Date and time of the last update of the payment
+}
