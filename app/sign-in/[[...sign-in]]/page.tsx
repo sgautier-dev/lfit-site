@@ -20,8 +20,8 @@ export default function Page() {
 					</h2>
 					<p className="mt-6 text-lg">
 						Connectez-vous pour retrouver vos vidéos d&apos;entraînement
-						préférées dans l&apos;Espace Membres de LFIT. Votre séance
-						personnalisée vous attend. <br /> Bon entrainement !
+						préférées dans l&apos;Espace Membres de LFIT. Des séances variées
+						vous attendent, pour tous les niveaux.<br /> Bon entrainement !
 					</p>
 				</div>
 				<div className="flex justify-center">
