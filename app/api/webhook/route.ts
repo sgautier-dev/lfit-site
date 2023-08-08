@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 	const signature = headers().get("Stripe-Signature") as string;
 	let event: Stripe.Event;
 	const stripeWebHookSecret = process.env.STRIPE_WEBHOOK_SECRET;
-	
+
 	if (!stripeWebHookSecret) {
 		return new NextResponse("Stripe Webhook secret not found", { status: 500 });
 	}
@@ -27,22 +27,25 @@ export async function POST(req: Request) {
 	const session = event.data.object as Stripe.Checkout.Session;
 
 	if (event.type === "checkout.session.completed") {
-		const subscription = await stripe.subscriptions.retrieve(
-			session.subscription as string
-		);
+		// Ensure it's a one-time payment
+		if (session.mode === "payment" && session.payment_status === "paid") {
+			// Retrieve the payment intent for more details if needed
+			const paymentIntent = await stripe.paymentIntents.retrieve(
+				session.payment_intent as string
+			);
 
-		if (!session?.metadata?.userId) {
-			return new NextResponse("User ID not found", { status: 400 });
+			if (!session?.metadata?.userId) {
+				return new NextResponse("User ID not found", { status: 400 });
+			}
+			await prisma.userSubscription.create({
+				data: {
+					userId: session?.metadata?.userId,
+					// stripeCustomerId: paymentIntent.customer as string,
+					stripePaymentIntentId: paymentIntent.id,
+					status: paymentIntent.status as string,
+				},
+			});
 		}
-		await prisma.userSubscription.create({
-			data: {
-				userId: session?.metadata?.userId,
-				stripeCustomerId: subscription.customer as string,
-				stripeSubscriptionId: subscription.id,
-				stripePriceId: subscription.items.data[0].price.id as string,
-				status: subscription.status as string,
-			},
-		});
 	}
 
 	return new NextResponse(null, { status: 200 });

@@ -14,30 +14,32 @@ export async function GET() {
 		if (!userId || !user) {
 			return new NextResponse("Unauthorized", { status: 401 });
 		}
-		
-		const userSubscription = await prisma.userSubscription.findUnique({
-			where: { userId },
-		});
 
-		if (userSubscription) {
-			if (userSubscription.stripeCustomerId) {
-				const stripeSession = await stripe.billingPortal.sessions.create({
-					customer: userSubscription.stripeCustomerId,
-					return_url: membersUrl,
-				});
-				return new NextResponse(JSON.stringify({ url: stripeSession.url }));
-			} else {
-				return new NextResponse("Stripe customer ID not found", {
-					status: 404,
-				});
-			}
-		}
+		// console.log("DATABASE_URL:", process.env.DATABASE_URL);
+		// console.log("Stripe userId: ", userId);
+		// const userSubscription = await prisma.userSubscription.findUnique({
+		// 	where: { userId },
+		// });
+
+		// if (userSubscription) {
+		// 	if (userSubscription.stripeCustomerId) {
+		// 		const stripeSession = await stripe.billingPortal.sessions.create({
+		// 			customer: userSubscription.stripeCustomerId,
+		// 			return_url: membersUrl,
+		// 		});
+		// 		return new NextResponse(JSON.stringify({ url: stripeSession.url }));
+		// 	} else {
+		// 		return new NextResponse("Stripe customer ID not found", {
+		// 			status: 404,
+		// 		});
+		// 	}
+		// }
 
 		const stripeSession = await stripe.checkout.sessions.create({
 			success_url: membersUrl,
 			cancel_url: membersUrl,
 			payment_method_types: ["card", "paypal"],
-			mode: "subscription",
+			mode: "payment",
 			billing_address_collection: "auto",
 			customer_email: user.emailAddresses[0].emailAddress,
 			line_items: [
@@ -57,6 +59,7 @@ export async function GET() {
 				userId: userId,
 			},
 		});
+
 		return new NextResponse(JSON.stringify({ url: stripeSession.url }));
 	} catch (error) {
 		console.log("[STRIPE_GET]", error);

@@ -1,6 +1,5 @@
-"use client"
+"use client";
 import { useState } from "react";
-import { redirect } from "next/navigation";
 
 export default function SubscriptionButton() {
 	const [loading, setLoading] = useState(false);
@@ -11,8 +10,10 @@ export default function SubscriptionButton() {
 			const res = await fetch("/api/stripe", { method: "GET" });
 			const { url } = await res.json();
 
+			console.log("Stripe URL", url);
+
 			if (res.ok && url) {
-				redirect(url);
+				window.location.href = url;
 			} else {
 				console.error("Failed to create Stripe session");
 			}

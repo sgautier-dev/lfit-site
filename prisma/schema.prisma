@@ -11,13 +11,10 @@ datasource db {
 }
 
 model UserSubscription {
-  id                       String    @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ObjectID
-  userId                   String @unique   // ID from Clerk for the associated user
-  stripeCustomerId         String @unique @map(name: "stripe_customer_id")  // Stripe customer ID
-  stripeSubscriptionId     String @unique @map(name: "stripe_subscription_id") // Stripe subscription ID
-  stripePriceId            String @unique @map(name: "stripe_price_id") // Stripe price ID
-  stripeSubscriptionStatus String @map(name: "stripe_subscription_status") // Stripe subscription status
-  status                   String    // Status of the payment, e.g., "successful"
-  createdAt                DateTime  @default(now()) // Date and time of the creation of the payment
-  updatedAt                DateTime  @updatedAt // Date and time of the last update of the payment
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId // MongoDB ObjectID
+  userId                String   @unique   // ID from Clerk for the associated user
+  stripePaymentIntentId String   @unique   // Stripe payment intent ID
+  status                String   // Status of the payment, e.g., "successful"
+  createdAt             DateTime @default(now()) // Date and time of the creation of the payment
+  updatedAt             DateTime @updatedAt // Date and time of the last update of the payment
 }
