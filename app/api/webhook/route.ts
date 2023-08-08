@@ -9,6 +9,7 @@ export async function POST(req: Request) {
 	const signature = headers().get("Stripe-Signature") as string;
 	let event: Stripe.Event;
 	const stripeWebHookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+	
 	if (!stripeWebHookSecret) {
 		return new NextResponse("Stripe Webhook secret not found", { status: 500 });
 	}

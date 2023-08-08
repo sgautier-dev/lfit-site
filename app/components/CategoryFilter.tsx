@@ -21,7 +21,7 @@ export default function CategoryFilter({
 	return (
 		<Menu as="div" className="relative inline-block text-left">
 			<div className="border-b border-gray-400">
-				<Menu.Button className="inline-flex w-full justify-center text-lg font-medium hover:text-gray-500 capitalize">
+				<Menu.Button className="inline-flex w-full justify-center text-lg font-medium hover:text-gray-500 capitalize" id="menu-button">
 					{selectedCategory}
 					<ChevronDownIcon
 						className="-mr-1 ml-1 h-7 w-7 flex-shrink-0 text-gray-400 hover:text-gray-500"

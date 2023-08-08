@@ -1,6 +1,7 @@
 import Videos from "../components/Videos";
 import getVideos from "@/sanity/lib/getVideos";
 import Image from "next/image";
+import SubscriptionButton from "../components/SubscriptionButton";
 
 export default async function Members() {
 	const videos = await getVideos();
@@ -24,19 +25,11 @@ export default async function Members() {
 					<p className="mt-6 text-lg">
 						Ici, le sport ne s&apos;arrête jamais. Profitez de vos séances
 						d&apos;entraînement préférées - Stretching, Pilates, Yogalates,
-						Cardio et plus encore - à tout moment, n&apos;importe où. Restez
-						en forme avec LFIT. <br /> Bon entrainement !
+						Cardio et plus encore - à tout moment, n&apos;importe où. Restez en
+						forme avec LFIT. <br /> Bon entrainement !
 					</p>
 				</div>
-				<div className="hidden sm:flex sm:justify-center">
-					<div className="relative rounded-full px-3 py-1 text-lg leading-6 ring-2 ring-pinkCust/50 hover:ring-pinkCust">
-						Abonnez-vous pour profiter de toutes les vidéos.{" "}
-						<a href="#" className="font-semibold text-pinkCust">
-							<span className="absolute inset-0" aria-hidden="true" />
-							<span aria-hidden="true">&rarr;</span>
-						</a>
-					</div>
-				</div>
+				<SubscriptionButton/>
 				<Videos videos={videos} />
 			</div>
 		</main>
