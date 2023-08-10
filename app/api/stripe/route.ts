@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prismadb";
 import { stripe } from "@/lib/stripe";
 import { absoluteUrl } from "@/lib/utils";
+import logger from "@/lib/logger";
 
 const membersUrl = absoluteUrl("/members");
 
@@ -12,14 +13,18 @@ export async function GET() {
 		const user = await currentUser();
 
 		if (!userId || !user) {
-			return new NextResponse("Unauthorized", { status: 401 });
+			return new NextResponse(JSON.stringify({ error: "Unauthorized" }), {
+				status: 401,
+			});
 		}
 
 		// console.log("DATABASE_URL:", process.env.DATABASE_URL);
 		// console.log("Stripe userId: ", userId);
-		// const userSubscription = await prisma.userSubscription.findUnique({
-		// 	where: { userId },
-		// });
+		const userSubscription = await prisma.userSubscription.findUnique({
+			where: { userId },
+		});
+
+		console.log("User subscription: ", userSubscription);
 
 		// if (userSubscription) {
 		// 	if (userSubscription.stripeCustomerId) {
@@ -35,34 +40,43 @@ export async function GET() {
 		// 	}
 		// }
 
-		const stripeSession = await stripe.checkout.sessions.create({
-			success_url: membersUrl,
-			cancel_url: membersUrl,
-			payment_method_types: ["card", "paypal"],
-			mode: "payment",
-			billing_address_collection: "auto",
-			customer_email: user.emailAddresses[0].emailAddress,
-			line_items: [
-				{
-					price_data: {
-						currency: "eur",
-						product_data: {
-							name: "Abonnement L.FIT",
-							description: "accès premium à toutes les vidéos",
+		if (!userSubscription) {
+			const stripeSession = await stripe.checkout.sessions.create({
+				success_url: membersUrl,
+				cancel_url: membersUrl,
+				payment_method_types: ["card", "paypal"],
+				mode: "payment",
+				billing_address_collection: "auto",
+				customer_email: user.emailAddresses[0].emailAddress,
+				line_items: [
+					{
+						price_data: {
+							currency: "eur",
+							product_data: {
+								name: "Abonnement L.FIT",
+								description: "accès premium à toutes les vidéos L.FIT",
+							},
+							unit_amount: 1000,
 						},
-						unit_amount: 1000,
+						quantity: 1,
 					},
-					quantity: 1,
+				],
+				metadata: {
+					userId: userId,
 				},
-			],
-			metadata: {
-				userId: userId,
-			},
-		});
-
-		return new NextResponse(JSON.stringify({ url: stripeSession.url }));
+			});
+			return new NextResponse(JSON.stringify({ url: stripeSession.url }));
+		} else {
+			return new NextResponse(
+				JSON.stringify({ error: "Vous êtes déjà abonné en premium" }),
+				{ status: 400 }
+			);
+		}
 	} catch (error) {
-		console.log("[STRIPE_GET]", error);
-		return new NextResponse("Internal Server Error", { status: 500 });
+		logger.error(error);
+		return new NextResponse(
+			JSON.stringify({ error: "Internal Server Error" }),
+			{ status: 500 }
+		);
 	}
 }

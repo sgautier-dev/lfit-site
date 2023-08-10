@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs";
 import prisma from "./prismadb";
+import logger from "./logger";
 
 export const checkSubscription = async () => {
 	const { userId } = auth();
@@ -20,7 +21,7 @@ export const checkSubscription = async () => {
 
 		return true;
 	} catch (error) {
-		console.error(error);
+		logger.error(error);
 		return false;
 	}
 };

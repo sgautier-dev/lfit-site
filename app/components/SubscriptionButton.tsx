@@ -3,46 +3,47 @@ import { useState } from "react";
 
 export default function SubscriptionButton() {
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	const handleSubscribeClick = async () => {
 		try {
 			setLoading(true);
 			const res = await fetch("/api/stripe", { method: "GET" });
-			const { url } = await res.json();
+			const data = await res.json();
 
-			console.log("Stripe URL", url);
-
-			if (res.ok && url) {
-				window.location.href = url;
+			if (data.error) {
+				setError(data.error);
+				setTimeout(() => setError(""), 5000); // Revert the error message after 5 seconds
+			} else if (data.url) {
+				window.location.href = data.url;
 			} else {
 				console.error("Failed to create Stripe session");
 			}
 		} catch (error) {
+			setError("An unexpected error occurred.");
+			setTimeout(() => setError(""), 5000);
 			console.error(error);
 		} finally {
 			setLoading(false);
 		}
 	};
 
+	const buttonText = () => {
+		if (loading) return "En cours de chargement...";
+		if (error) return error;
+		return "Abonnez-vous pour profiter de toutes les vidéos";
+	};
+
 	return (
-		// <div className="hidden sm:flex sm:justify-center">
-		// 	<div className="relative rounded-full px-3 py-1 text-lg leading-6 ring-2 ring-pinkCust/50 hover:ring-pinkCust">
-		// 		Abonnez-vous pour profiter de toutes les vidéos.{" "}
-		// 		<a href="#" className="font-semibold text-pinkCust">
-		// 			<span className="absolute inset-0" aria-hidden="true" />
-		// 			<span aria-hidden="true">&rarr;</span>
-		// 		</a>
-		// 	</div>
-		// </div>
 		<div className="hidden sm:flex sm:justify-center">
 			<button
-				className={`relative rounded-full px-3 py-1 text-lg leading-6 ring-2 ring-pinkCust/50 hover:ring-pinkCust ${
+				className={`relative rounded-full px-3 py-1 text-lg leading-6 ring-4 ring-pinkCust/50 hover:ring-pinkCust ${
 					loading ? "opacity-50 cursor-not-allowed" : ""
 				}`}
 				onClick={handleSubscribeClick}
 				disabled={loading}
 			>
-				Abonnez-vous pour profiter de toutes les vidéos.
+				{buttonText()} {""}
 				<span className="font-semibold text-pinkCust">
 					<span className="absolute inset-0" aria-hidden="true" />
 					<span aria-hidden="true">&rarr;</span>

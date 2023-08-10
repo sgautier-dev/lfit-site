@@ -26,6 +26,8 @@ export async function POST(req: Request) {
 
 	const session = event.data.object as Stripe.Checkout.Session;
 
+
+
 	if (event.type === "checkout.session.completed") {
 		// Ensure it's a one-time payment
 		if (session.mode === "payment" && session.payment_status === "paid") {
@@ -33,6 +35,10 @@ export async function POST(req: Request) {
 			const paymentIntent = await stripe.paymentIntents.retrieve(
 				session.payment_intent as string
 			);
+
+			console.log("webhook userId", session?.metadata?.userId)
+			console.log("webhook payment id", paymentIntent.id)
+			console.log("webhook payment status", paymentIntent.status)
 
 			if (!session?.metadata?.userId) {
 				return new NextResponse("User ID not found", { status: 400 });
