@@ -20,7 +20,7 @@ export default function SubscriptionButton() {
 				console.error("Failed to create Stripe session");
 			}
 		} catch (error) {
-			setError("An unexpected error occurred.");
+			setError("Erreur du serveur de paiement. Réessayez plus tard.");
 			setTimeout(() => setError(""), 5000);
 			console.error(error);
 		} finally {
