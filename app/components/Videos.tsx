@@ -6,9 +6,10 @@ import { LockOpenIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 
 interface VideosProps {
 	videos: Video[];
+	isPremium: boolean;
 }
 
-export default function Videos({ videos }: VideosProps) {
+export default function Videos({ videos, isPremium }: VideosProps) {
 	const [selectedCategory, setSelectedCategory] =
 		useState(ALL_CATEGORIES_LABEL);
 
@@ -31,7 +32,11 @@ export default function Videos({ videos }: VideosProps) {
 					setSelectedCategory={setSelectedCategory}
 				/>
 
-				<LockOpenIcon className="h-8 w-8 text-pinkCust" />
+				{isPremium ? (
+					<LockOpenIcon className="h-8 w-8 text-pinkCust" aria-label="accès non premium" />
+				) : (
+					<LockClosedIcon className="h-8 w-8 text-pinkCust" aria-label="accès premium" />
+				)}
 			</div>
 			<div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
 				{filteredVideos.map((video) => (
@@ -41,7 +46,7 @@ export default function Videos({ videos }: VideosProps) {
 								<source src={video.videoUrl} type="video/mp4" />
 								Votre navigateur ne prend pas en charge le lecteur vidéo.
 							</video>
-							{video.access !== "free" && (
+							{(video.access !== "free" && !isPremium) && (
 								<LockClosedIcon
 									className="absolute h-full w-full object-cover object-center text-pinkCust"
 									aria-hidden="true"
