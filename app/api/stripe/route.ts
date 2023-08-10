@@ -18,13 +18,9 @@ export async function GET() {
 			});
 		}
 
-		// console.log("DATABASE_URL:", process.env.DATABASE_URL);
-		// console.log("Stripe userId: ", userId);
 		const userSubscription = await prisma.userSubscription.findUnique({
 			where: { userId },
 		});
-
-		console.log("User subscription: ", userSubscription);
 
 		// if (userSubscription) {
 		// 	if (userSubscription.stripeCustomerId) {
