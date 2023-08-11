@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { legal } from "@/lib/navigation";
+import logoRun from "@/public/images/LogoRegionReunion.jpg"
+import logoUE from "@/public/images/LogoUnionEuropeenne.jpg"
 
 const social: SocialType[] = [
 	{
@@ -93,14 +95,16 @@ export default function Footer() {
 				<div className="mt-3 grid gap-3 items-center md:order-4">
 					<div className="flex items-center justify-center gap-3">
 						<Image
-							src="/images/LogoRegionReunion.jpg"
+							src={logoRun}
+							placeholder="blur"
 							alt="logo de la région réunion"
 							width={80}
 							height={60}
 							className="aspect-auto object-cover"
 						/>
 						<Image
-							src="/images/LogoUnionEuropeenne.jpg"
+							src={logoUE}
+							placeholder="blur"
 							alt="logo union européenne"
 							width={80}
 							height={60}

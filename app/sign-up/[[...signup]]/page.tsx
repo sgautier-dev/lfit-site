@@ -1,11 +1,13 @@
 import { SignUp } from "@clerk/nextjs";
 import Image from "next/image";
+import membersBackPic from "@/public/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg";
 
 export default function Page() {
 	return (
 		<main className="relative mx-auto min-h-screen font-judson xl:mx-auto xl:max-w-7xl xl:px-8">
 			<Image
-				src="/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg"
+				src={membersBackPic}
+				placeholder="blur"
 				alt="Lynda votre coach fitness à la réunion"
 				width={1920}
 				height={1280}
