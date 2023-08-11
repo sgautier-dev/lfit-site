@@ -68,6 +68,28 @@ export default function Privacy() {
 						</li>
 					</ul>
 				</div>
+				<h2 className="text-xl font-bold mb-2">Cookies</h2>
+				<div className="mb-4">
+					<p>
+						Nous utilisons des services tiers comme Clerk (authentification) et
+						Stripe (paiements), qui peuvent utiliser des cookies pour des
+						fonctionnalités essentielles. Bien que nous n&apos;utilisions pas de
+						cookies directement pour le suivi ou le marketing, ces cookies de
+						tiers sont nécessaires pour fournir certains services sur notre
+						site.
+					</p>
+					<p>
+						Ces cookies peuvent être configurés par ces services pour faciliter
+						votre navigation. Vous pouvez configurer votre navigateur pour
+						refuser certains ou tous les cookies, mais cela peut affecter la
+						disponibilité et la fonctionnalité de notre site.
+					</p>
+					<p>
+						Pour plus d&apos;informations sur les cookies utilisés par ces
+						fournisseurs, vous pouvez vous référer à leurs politiques de
+						confidentialité respectives.
+					</p>
+				</div>
 				<h2 className="text-xl font-bold mb-2">Consentement</h2>
 				<p className="mb-4">
 					En utilisant notre site, vous consentez à notre politique de
@@ -79,10 +101,10 @@ export default function Privacy() {
 				<p className="mb-4">
 					Vous pouvez accéder, modifier ou supprimer votre compte directement en
 					utilisant le bouton utilisateur Clerk (situé en haut à droite dans la
-					barre d&apos;en-tête). Cette fonction vous permet de contrôler vos données
-					de manière autonome et rapide. Si vous avez des questions ou des
-					préoccupations concernant vos données personnelles, vous pouvez nous
-					contacter via le{" "}
+					barre d&apos;en-tête). Cette fonction vous permet de contrôler vos
+					données de manière autonome et rapide. Si vous avez des questions ou
+					des préoccupations concernant vos données personnelles, vous pouvez
+					nous contacter via le{" "}
 					<Link href="/#contact" className="text-pinkCust hover:text-gray-700">
 						formulaire de contact
 					</Link>{" "}

@@ -35,9 +35,9 @@ export default function SubscriptionButton() {
 	};
 
 	return (
-		<div className="hidden sm:flex sm:justify-center">
+		<div className="flex justify-center">
 			<button
-				className={`relative rounded-full px-3 py-1 text-lg leading-6 ring-4 ring-pinkCust/50 hover:ring-pinkCust ${
+				className={`relative rounded-full px-3 py-1 sm:text-lg leading-6 ring-4 ring-pinkCust/50 hover:ring-pinkCust ${
 					loading ? "opacity-50 cursor-not-allowed" : ""
 				}`}
 				onClick={handleSubscribeClick}

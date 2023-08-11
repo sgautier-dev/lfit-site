@@ -19,10 +19,10 @@ export default function Legal() {
 					Le numéro SIRET de l&apos;entreprise L.FIT est 79074004700010.
 				</p>
 				<p className="mb-4">
-					Le représentant légal d&apos;L.FIT est Lynda Soubirou.
+					Le représentant légal de L.FIT est Lynda Soubirou.
 				</p>
 				<p className="mb-4">
-					Le site web d&apos;L.FIT est hébergé par Vercel Inc., dont le siège
+					Le site web L.FIT est hébergé par Vercel Inc., dont le siège
 					social est situé 340 S Lemon Ave #4133, Walnut, CA 91789, USA.
 				</p>
 				<p className="mb-4">

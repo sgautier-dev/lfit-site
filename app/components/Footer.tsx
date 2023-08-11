@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BsArrowUpCircle } from "react-icons/bs";
+import { legal } from "@/lib/navigation";
 
 const social: SocialType[] = [
 	{
@@ -49,8 +50,8 @@ export default function Footer() {
 
 	return (
 		<footer className="z-10 bg-darkGrayCust text-white">
-			<div className="mx-auto max-w-7xl px-6 py-6 md:grid md:grid-cols-4 md:items-center md:justify-between lg:px-8">
-				<div className="flex justify-center space-x-6 md:order-4">
+			<div className="mx-auto max-w-7xl px-6 py-6 md:grid md:grid-cols-5 md:items-center md:justify-between lg:px-8">
+				<div className="flex justify-center space-x-6 md:order-5">
 					{social.map((item) => (
 						<a
 							key={item.name}
@@ -63,7 +64,21 @@ export default function Footer() {
 						</a>
 					))}
 				</div>
-				<div className="mt-3 md:order-2">
+				<div className="mt-3 md:mt-0 md:order-2">
+					<ul className="space-y-3 text-center">
+						{legal.map((item) => (
+							<li key={item.name}>
+								<a
+									href={item.href}
+									className="text-xs leading-5 hover:text-gray-300"
+								>
+									{item.name}
+								</a>
+							</li>
+						))}
+					</ul>
+				</div>
+				<div className="mt-3 md:order-3">
 					<a href="https://www.sgautier.dev/" target="_blank">
 						<p translate="no" className="text-center text-xs leading-5">
 							Designed by SG
@@ -75,7 +90,7 @@ export default function Footer() {
 						&copy; <span>{year}</span> L. FIT, Tous droits réservés.
 					</p>
 				</div>
-				<div className="mt-3 grid gap-3 items-center md:order-3">
+				<div className="mt-3 grid gap-3 items-center md:order-4">
 					<div className="flex items-center justify-center gap-3">
 						<Image
 							src="/images/LogoRegionReunion.jpg"
