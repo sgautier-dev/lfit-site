@@ -31,7 +31,7 @@ const social: SocialType[] = [
 	},
 	{
 		name: "YouTube",
-		href: "https://www.youtube.com/",
+		href: "https://youtube.com/@lareunion974lfit",
 		icon: (props) => (
 			<svg fill="currentColor" viewBox="0 0 24 24" {...props}>
 				<path
