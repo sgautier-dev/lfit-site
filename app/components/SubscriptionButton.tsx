@@ -1,7 +1,14 @@
 "use client";
 import { useState } from "react";
 
-export default function SubscriptionButton() {
+interface SubscriptionButtonProps {
+	isPremium: boolean;
+	endDate?: string | null;
+}
+export default function SubscriptionButton({
+	isPremium,
+	endDate,
+}: SubscriptionButtonProps) {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
 
@@ -31,6 +38,7 @@ export default function SubscriptionButton() {
 	const buttonText = () => {
 		if (loading) return "En cours de chargement...";
 		if (error) return error;
+		if (endDate) return `Votre abonnement premium prendra fin le ${endDate}`;
 		return "Abonnez-vous pour profiter de toutes les vidéos";
 	};
 
@@ -41,13 +49,15 @@ export default function SubscriptionButton() {
 					loading ? "opacity-50 cursor-not-allowed" : ""
 				}`}
 				onClick={handleSubscribeClick}
-				disabled={loading}
+				disabled={loading || isPremium}
 			>
 				{buttonText()} {""}
-				<span className="font-semibold text-pinkCust">
-					<span className="absolute inset-0" aria-hidden="true" />
-					<span aria-hidden="true">&rarr;</span>
-				</span>
+				{!loading && !error && !isPremium && (
+					<span className="font-semibold text-pinkCust">
+						<span className="absolute inset-0" aria-hidden="true" />
+						<span aria-hidden="true">&rarr;</span>
+					</span>
+				)}
 			</button>
 		</div>
 	);

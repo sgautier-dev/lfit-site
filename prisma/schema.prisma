@@ -15,6 +15,7 @@ model UserSubscription {
   userId                String   @unique   // ID from Clerk for the associated user
   stripePaymentIntentId String   @unique   // Stripe payment intent ID
   status                String   // Status of the payment, e.g., "successful"
-  createdAt             DateTime @default(now()) // Date and time of the creation of the payment
+  subscriptionStartDate DateTime @default(now()) // Date and time of the start of the subscription
+  subscriptionEndDate   DateTime // Date and time of the end of the subscription
   updatedAt             DateTime @updatedAt // Date and time of the last update of the payment
 }

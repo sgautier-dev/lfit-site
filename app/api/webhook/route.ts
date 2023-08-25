@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { headers } from "next/headers";
 import prisma from "@/lib/prismadb";
 import { stripe } from "@/lib/stripe";
+import { addYears, addMinutes } from "date-fns";
 
 export async function POST(req: Request) {
 	const body = await req.text();
@@ -29,18 +30,30 @@ export async function POST(req: Request) {
 	if (event.type === "checkout.session.completed") {
 		// Ensure it's a one-time payment
 		if (session.mode === "payment" && session.payment_status === "paid") {
-			// Retrieve the payment intent for more details if needed
 			const paymentIntent = await stripe.paymentIntents.retrieve(
 				session.payment_intent as string
 			);
 
-			if (!session?.metadata?.userId) {
+			const userId = session?.metadata?.userId;
+			if (!userId) {
 				return new NextResponse("User ID not found", { status: 400 });
 			}
-			await prisma.userSubscription.create({
-				data: {
-					userId: session?.metadata?.userId,
-					// stripeCustomerId: paymentIntent.customer as string,
+
+			const currentDate = new Date(); // today's date
+			const endDate = addMinutes(currentDate, 1);
+
+			await prisma.userSubscription.upsert({
+				where: { userId },
+				create: {
+					userId,
+					subscriptionStartDate: currentDate,
+					subscriptionEndDate: endDate,
+					stripePaymentIntentId: paymentIntent.id,
+					status: paymentIntent.status as string,
+				},
+				update: {
+					subscriptionStartDate: currentDate,
+					subscriptionEndDate: endDate,
 					stripePaymentIntentId: paymentIntent.id,
 					status: paymentIntent.status as string,
 				},
@@ -48,5 +61,8 @@ export async function POST(req: Request) {
 		}
 	}
 
-	return new NextResponse(null, { status: 200 });
+	return new NextResponse(
+		JSON.stringify({ message: "Subscription processed successfully." }),
+		{ status: 200 }
+	);
 }

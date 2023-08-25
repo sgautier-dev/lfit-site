@@ -1,11 +1,12 @@
 import { auth } from "@clerk/nextjs";
 import prisma from "./prismadb";
 import logger from "./logger";
+import { formatDateToFrench } from "./utils";
 
 export const checkSubscription = async () => {
 	const { userId } = auth();
 
-	if (!userId) return false;
+	if (!userId) return { isPremium: false, endDate: null };
 
 	try {
 		const userSubscription = await prisma.userSubscription.findUnique({
@@ -13,15 +14,27 @@ export const checkSubscription = async () => {
 				userId: userId,
 			},
 			select: {
-				// stripeCustomerId: true,
-				stripePaymentIntentId: true,
+				subscriptionEndDate: true,
 			},
 		});
-		if (!userSubscription) return false;
 
-		return true;
+		if (!userSubscription || !userSubscription.subscriptionEndDate) {
+			return { isPremium: false, endDate: null };
+		}
+
+		const isPremium =
+			new Date() < new Date(userSubscription.subscriptionEndDate);
+
+		if (!isPremium) {
+			return { isPremium: false, endDate: null };
+		}
+
+		return {
+			isPremium,
+			endDate: formatDateToFrench(userSubscription.subscriptionEndDate),
+		};
 	} catch (error) {
 		logger.error(error);
-		return false;
+		return { isPremium: false, endDate: null };
 	}
 };

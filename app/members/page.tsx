@@ -3,10 +3,10 @@ import getVideos from "@/sanity/lib/getVideos";
 import Image from "next/image";
 import SubscriptionButton from "../components/SubscriptionButton";
 import { checkSubscription } from "@/lib/subscription";
-import membersBackPic from "@/public/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg"
+import membersBackPic from "@/public/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg";
 
 export default async function Members() {
-	const [videos, isPremium] = await Promise.all([
+	const [videos, { endDate, isPremium }] = await Promise.all([
 		getVideos(),
 		checkSubscription(),
 	]);
@@ -35,7 +35,7 @@ export default async function Members() {
 						forme avec LFIT. <br /> Bon entrainement !
 					</p>
 				</div>
-				{ !isPremium && <SubscriptionButton />}
+				<SubscriptionButton isPremium={isPremium} endDate={endDate} />
 				<Videos videos={videos} isPremium={isPremium} />
 			</div>
 		</main>

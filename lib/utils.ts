@@ -9,3 +9,12 @@ export function getRecaptchaVerificationUrl(token: string): string {
 
 	return `https://www.google.com/recaptcha/api/siteverify?${params.toString()}`;
 }
+
+export const formatDateToFrench = (dateString: Date) => {
+	const date = new Date(dateString);
+	return date.toLocaleDateString("fr-FR", {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	});
+};

@@ -36,7 +36,12 @@ export async function GET() {
 		// 	}
 		// }
 
-		if (!userSubscription) {
+		const currentDate = new Date();
+
+		if (
+			!userSubscription ||
+			!(new Date(userSubscription.subscriptionEndDate) >= currentDate)
+		) {
 			const stripeSession = await stripe.checkout.sessions.create({
 				success_url: membersUrl,
 				cancel_url: membersUrl,
