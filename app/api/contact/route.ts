@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import logger from "@/lib/logger";
 const nodemailer = require("nodemailer");
-
-if (!process.env.SMTP_HOST || !process.env.SMTP_PORT || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.RECAPTCHA_SECRET_KEY) {
-	throw new Error("Missing required environment variables");
-}
+import { getRecaptchaVerificationUrl } from "@/lib/utils";
 
 // Create a transporter object with SMTP configuration
 const transporter = nodemailer.createTransport({
@@ -22,8 +19,6 @@ const transporter = nodemailer.createTransport({
 export async function POST(req: NextRequest) {
 	const { firstName, lastName, email, message, token } = await req.json();
 
-	const verifyRecaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`;
-
 	// console.log("data: ", `${firstName} ${lastName} ${email} ${message}`);
 
 	if (!email || !firstName || !lastName || !message)
@@ -33,6 +28,7 @@ export async function POST(req: NextRequest) {
 		);
 
 	try {
+		const verifyRecaptchaUrl = getRecaptchaVerificationUrl(token);
 		const verifyRecaptcha = await fetch(verifyRecaptchaUrl);
 		const responseRecaptcha = await verifyRecaptcha.json();
 
