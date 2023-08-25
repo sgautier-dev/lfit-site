@@ -1,4 +1,5 @@
 import "./globals.css";
+import "../lib/validateEnv"
 import Header from "./components/Header";
 import {
 	Exo_2,
