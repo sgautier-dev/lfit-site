@@ -17,9 +17,16 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function POST(req: NextRequest) {
-	const { firstName, lastName, email, message, token } = await req.json();
-
-	// console.log("data: ", `${firstName} ${lastName} ${email} ${message}`);
+	let data;
+	try {
+		data = await req.json();
+	} catch (error) {
+		return NextResponse.json(
+			{ message: "Invalid JSON data in the request body" },
+			{ status: 400 }
+		);
+	}
+	const { firstName, lastName, email, message, token } = data;
 
 	if (!email || !firstName || !lastName || !message)
 		return NextResponse.json(
@@ -29,7 +36,10 @@ export async function POST(req: NextRequest) {
 
 	try {
 		const verifyRecaptchaUrl = getRecaptchaVerificationUrl(token);
-		const verifyRecaptcha = await fetch(verifyRecaptchaUrl);
+		const verifyRecaptcha = await fetch(verifyRecaptchaUrl).catch((error) => {
+			throw new Error("Failed to fetch reCAPTCHA verification URL");
+		});
+
 		const responseRecaptcha = await verifyRecaptcha.json();
 
 		if (!responseRecaptcha.success) {
@@ -41,13 +51,25 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
-		await transporter.sendMail({
+		const sendMailPromise = transporter.sendMail({
 			from: process.env.SMTP_USER,
 			to: process.env.SMTP_USER,
 			replyTo: `${firstName} ${lastName} <${email}>`,
 			subject: "Nouveau message du site L.FIT",
 			text: `Vous avez reçu un message de ${firstName} ${lastName} <${email}>:\n${message}`,
 		});
+
+		//for avoiding indefinite hangs if SMTP is slow or unresponsive
+		const sendMailResult = await Promise.race([
+			sendMailPromise,
+			new Promise((resolve, reject) =>
+				setTimeout(() => reject(new Error("sendMail timed out")), 5000)
+			),
+		]);
+
+		if (!sendMailResult) {
+			throw new Error("sendMail failed or timed out");
+		}
 
 		return NextResponse.json(
 			{

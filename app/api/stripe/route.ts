@@ -4,6 +4,7 @@ import prisma from "@/lib/prismadb";
 import { stripe } from "@/lib/stripe";
 import { absoluteUrl } from "@/lib/utils";
 import logger from "@/lib/logger";
+import { isAfter } from "date-fns";
 
 const membersUrl = absoluteUrl("/members");
 
@@ -40,7 +41,7 @@ export async function GET() {
 
 		if (
 			!userSubscription ||
-			!(new Date(userSubscription.subscriptionEndDate) >= currentDate)
+			!isAfter(new Date(userSubscription.subscriptionEndDate), currentDate)
 		) {
 			const stripeSession = await stripe.checkout.sessions.create({
 				success_url: membersUrl,
@@ -48,7 +49,7 @@ export async function GET() {
 				payment_method_types: ["card", "paypal"],
 				mode: "payment",
 				billing_address_collection: "auto",
-				"allow_promotion_codes": true,
+				allow_promotion_codes: true,
 				customer_email: user.emailAddresses[0].emailAddress,
 				line_items: [
 					{
@@ -68,7 +69,7 @@ export async function GET() {
 			);
 		}
 	} catch (error) {
-		logger.error(error);
+		logger.error("Error in stripe route: ", error);
 		return new NextResponse(
 			JSON.stringify({ error: "Internal Server Error" }),
 			{ status: 500 }
