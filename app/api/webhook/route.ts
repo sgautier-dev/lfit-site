@@ -15,6 +15,14 @@ export async function POST(req: Request) {
 		return new NextResponse("Stripe Webhook secret not found", { status: 500 });
 	}
 
+	if (!body || typeof body !== "string") {
+		return new NextResponse("Invalid request body", { status: 400 });
+	}
+
+	if (!signature || typeof signature !== "string") {
+		return new NextResponse("Invalid request signature", { status: 400 });
+	}
+
 	try {
 		event = stripe.webhooks.constructEvent(
 			body,
@@ -30,9 +38,7 @@ export async function POST(req: Request) {
 	if (event.type === "checkout.session.completed") {
 		// Ensure it is paid
 		if (session.payment_status === "paid") {
-			const paymentIntent = await stripe.paymentIntents.retrieve(
-				session.payment_intent as string
-			);
+			const paymentIntentId = session.payment_intent as string;
 
 			const userId = session?.metadata?.userId;
 			if (!userId) {
@@ -49,14 +55,14 @@ export async function POST(req: Request) {
 					userId,
 					subscriptionStartDate: currentDate,
 					subscriptionEndDate: endDate,
-					stripePaymentIntentId: paymentIntent.id,
-					status: paymentIntent.status as string,
+					stripePaymentIntentId: paymentIntentId,
+					status: session.payment_status,
 				},
 				update: {
 					subscriptionStartDate: currentDate,
 					subscriptionEndDate: endDate,
-					stripePaymentIntentId: paymentIntent.id,
-					status: paymentIntent.status as string,
+					stripePaymentIntentId: paymentIntentId,
+					status: session.payment_status,
 				},
 			});
 		}
