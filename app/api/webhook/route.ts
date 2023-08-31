@@ -28,8 +28,8 @@ export async function POST(req: Request) {
 	const session = event.data.object as Stripe.Checkout.Session;
 
 	if (event.type === "checkout.session.completed") {
-		// Ensure it's a one-time payment
-		if (session.mode === "payment" && session.payment_status === "paid") {
+		// Ensure it is paid
+		if (session.payment_status === "paid") {
 			const paymentIntent = await stripe.paymentIntents.retrieve(
 				session.payment_intent as string
 			);
@@ -39,7 +39,8 @@ export async function POST(req: Request) {
 				return new NextResponse("User ID not found", { status: 400 });
 			}
 
-			const currentDate = new Date(); // today's date
+			//setting subscription end date
+			const currentDate = new Date();
 			const endDate = addMinutes(currentDate, 1);
 
 			await prisma.userSubscription.upsert({

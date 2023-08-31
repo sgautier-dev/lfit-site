@@ -48,17 +48,11 @@ export async function GET() {
 				payment_method_types: ["card", "paypal"],
 				mode: "payment",
 				billing_address_collection: "auto",
+				"allow_promotion_codes": true,
 				customer_email: user.emailAddresses[0].emailAddress,
 				line_items: [
 					{
-						price_data: {
-							currency: "eur",
-							product_data: {
-								name: "Abonnement L.FIT",
-								description: "accès premium à toutes les vidéos L.FIT",
-							},
-							unit_amount: 1000,
-						},
+						price: process.env.STRIPE_PRICE_ID,
 						quantity: 1,
 					},
 				],
