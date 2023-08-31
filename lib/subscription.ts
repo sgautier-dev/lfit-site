@@ -2,11 +2,13 @@ import { auth } from "@clerk/nextjs";
 import prisma from "./prismadb";
 import logger from "./logger";
 import { formatDateToFrench } from "./utils";
+import { isBefore } from "date-fns";
 
+const NO_SUBSCRIPTION = { isPremium: false, endDate: null };
 export const checkSubscription = async () => {
 	const { userId } = auth();
 
-	if (!userId) return { isPremium: false, endDate: null };
+	if (!userId) return NO_SUBSCRIPTION;
 
 	try {
 		const userSubscription = await prisma.userSubscription.findUnique({
@@ -19,14 +21,17 @@ export const checkSubscription = async () => {
 		});
 
 		if (!userSubscription || !userSubscription.subscriptionEndDate) {
-			return { isPremium: false, endDate: null };
+			return NO_SUBSCRIPTION;
 		}
 
-		const isPremium =
-			new Date() < new Date(userSubscription.subscriptionEndDate);
+		const currentDate = new Date();
+		const isPremium = isBefore(
+			currentDate,
+			new Date(userSubscription.subscriptionEndDate)
+		);
 
 		if (!isPremium) {
-			return { isPremium: false, endDate: null };
+			return NO_SUBSCRIPTION;
 		}
 
 		return {
@@ -34,7 +39,7 @@ export const checkSubscription = async () => {
 			endDate: formatDateToFrench(userSubscription.subscriptionEndDate),
 		};
 	} catch (error) {
-		logger.error(error);
-		return { isPremium: false, endDate: null };
+		logger.error('An error occurred in checkSubscription: ',error);
+		return NO_SUBSCRIPTION;
 	}
 };
