@@ -1,12 +1,6 @@
 import { navigation } from "@/lib/navigation";
 import Link from "next/link";
 import { VideoCameraIcon } from "@heroicons/react/24/solid";
-// import {
-// 	getKindeServerSession,
-// 	RegisterLink,
-// 	LoginLink,
-// 	LogoutLink,
-// } from "@kinde-oss/kinde-auth-nextjs/server";
 import {
 	UserButton,
 	SignedIn,
@@ -15,12 +9,8 @@ import {
 	SignUpButton,
 } from "@clerk/nextjs";
 import MobileMenu from "./MobileMenu";
-// import AuthIcons from "./AuthIcons";
 
 export default function Header() {
-	// const { isAuthenticated, getUser } = getKindeServerSession();
-	// const user = getUser();
-
 	return (
 		<header className="sticky top-0 z-10 bg-darkGrayCust text-white">
 			<nav
@@ -67,39 +57,6 @@ export default function Header() {
 							/>
 						</svg>
 					</a>
-
-					{/* {!isAuthenticated() ? (
-						<>
-							<LoginLink className="hover:scale-125 hover:opacity-80 transition">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 24 24"
-									fill="currentColor"
-									className="w-6 h-6 text-pinkCust"
-								>
-									<path
-										fillRule="evenodd"
-										d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-										clipRule="evenodd"
-									/>
-								</svg>
-							</LoginLink>
-							<RegisterLink className="rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust">
-								S&apos;inscrire
-							</RegisterLink>
-						</>
-					) : (
-						<>
-							<AuthIcons userGivenName={user?.given_name} />
-							<LogoutLink className=" text-pinkCust shadow-sm hover:scale-125 hover:opacity-80 transition ">
-								<span className="sr-only">se déconnecter</span>
-								<ArrowLeftOnRectangleIcon
-									className="h-8 w-8"
-									aria-hidden="true"
-								/>
-							</LogoutLink>
-						</>
-					)} */}
 
 					<div className="text-pinkCust">
 						<SignedIn>

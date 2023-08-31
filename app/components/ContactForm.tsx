@@ -98,7 +98,6 @@ export default function ContactForm({ contact }: ContactProp) {
 				);
 			}
 
-			// throw new Error('test erreur')
 		} catch (error: any) {
 			console.error(error);
 			setSubmitError(error.message);
