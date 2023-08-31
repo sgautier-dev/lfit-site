@@ -46,7 +46,7 @@ export async function GET() {
 			const stripeSession = await stripe.checkout.sessions.create({
 				success_url: membersUrl,
 				cancel_url: membersUrl,
-				payment_method_types: ["card", "paypal"],
+				payment_method_types: ["card"],
 				mode: "payment",
 				billing_address_collection: "auto",
 				allow_promotion_codes: true,
@@ -68,7 +68,7 @@ export async function GET() {
 				{ status: 400 }
 			);
 		}
-	} catch (error) {
+	} catch (error: any) {
 		logger.error("Error in stripe route: ", error);
 		return new NextResponse(
 			JSON.stringify({ error: "Internal Server Error" }),

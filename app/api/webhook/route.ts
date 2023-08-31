@@ -47,7 +47,7 @@ export async function POST(req: Request) {
 
 			//setting subscription end date
 			const currentDate = new Date();
-			const endDate = addMinutes(currentDate, 1);
+			const endDate = addYears(currentDate, 1);
 
 			await prisma.userSubscription.upsert({
 				where: { userId },
