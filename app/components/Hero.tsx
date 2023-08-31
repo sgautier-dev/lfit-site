@@ -19,7 +19,7 @@ export default async function Hero() {
 					placeholder="blur"
 					alt="Lynda votre coach fitness à la réunion"
 					width={400}
-					height={500}
+					height={570}
 					className="aspect-auto object-cover px-6"
 					priority
 				/>

@@ -59,7 +59,7 @@ export default async function Cours() {
 						src={cours.secondaryImage}
 						alt="Lynda votre coach fitness à la réunion"
 						width={200}
-						height={500}
+						height={350}
 						className="mr-6 lg:mr-0 mt-6 aspect-auto object-cover justify-self-end rounded-xl"
 					/>
 				</div>
