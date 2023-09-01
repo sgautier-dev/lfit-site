@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a client website for a sport coach. It includes general information about the coach services and background and a member's protected area where users can watch training videos, subscription is needed to be able to access all premium videos. Project is live at [www.lfit.pro]
+This project is a client website for a sport coach. It includes general information about the coach services and background and a member's protected area where users can watch training videos, subscription is needed to be able to access all premium videos. Project is live at [https://www.lfit.pro/]
 
 ## Requirements
 
@@ -17,11 +17,12 @@ Copy the `.env.sample` and `.env.local.sample` file to a new files named `.env` 
 
 ## Tech Stack
 
-- Node.js: `18.x` or higher
-- Frontend: Next.js 13.x
+- Node.js: 18.x
+- Frontend: Next.js 13.x App Router
 - Backend: Next.js API routes
 - Database: Prisma 5.x
 - Authentication: Clerk 4.x
+- Payment: Stripe 12.x with webhook
 - State Management: React 18.x
 - CSS: Tailwind CSS 3.x
 - Logging: Pino 8.x
