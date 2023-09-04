@@ -10,4 +10,5 @@ export const navigation = [
 export const legal = [
 	{ name: "Confidentialité", href: "/privacy" },
 	{ name: "Mentions légales", href: "/mentions" },
+	{ name: "CGV", href: "/cgv" },
 ];

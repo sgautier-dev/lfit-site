@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { legal } from "@/lib/navigation";
-import logoRun from "@/public/images/LogoRegionReunion.jpg"
+import logoRun from "@/public/images/logo_region.jpg"
 import logoUE from "@/public/images/LogoUnionEuropeenne.jpg"
 
 const social: SocialType[] = [
@@ -98,7 +98,7 @@ export default function Footer() {
 							src={logoRun}
 							placeholder="blur"
 							alt="logo de la région réunion"
-							width={80}
+							width={127}
 							height={60}
 							className="aspect-auto object-cover"
 						/>
@@ -106,7 +106,7 @@ export default function Footer() {
 							src={logoUE}
 							placeholder="blur"
 							alt="logo union européenne"
-							width={80}
+							width={73}
 							height={60}
 							className="aspect-auto object-cover"
 						/>
