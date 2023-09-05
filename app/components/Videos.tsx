@@ -48,7 +48,7 @@ export default function Videos({ videos, isPremium = false }: VideosProps) {
 				{filteredVideos.map((video) => (
 					<div key={video._id} className="group relative">
 						<div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100">
-							<video controls className="object-fill object-center">
+							<video controls className="object-fill object-center" preload="none">
 								<source src={video.videoUrl} type="video/mp4" />
 								Votre navigateur ne prend pas en charge le lecteur vidéo.
 							</video>
