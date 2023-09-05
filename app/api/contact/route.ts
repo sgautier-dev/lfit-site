@@ -16,6 +16,12 @@ const transporter = nodemailer.createTransport({
 	// debug: true, // include SMTP traffic in the logs
 });
 
+/*
+Contact form route: validates the request body, 
+verifies a reCAPTCHA token, 
+sends an email using SMTP, 
+and returns a response based on the success or failure of these operations.
+*/
 export async function POST(req: NextRequest) {
 	let data;
 	try {

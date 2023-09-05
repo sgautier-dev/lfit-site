@@ -5,6 +5,12 @@ import prisma from "@/lib/prismadb";
 import { stripe } from "@/lib/stripe";
 import { addYears, addMinutes } from "date-fns";
 
+/*
+  Is a webhook handler that processes a Stripe checkout session. It receives a request with a body and a signature, and verifies the signature to ensure the request is authentic. 
+  It then constructs the event object using the Stripe library and checks if the event type is correct. 
+  If it is, it checks if the session is paid and retrieves the payment intent ID and user ID from the session metadata. 
+  It then updates or creates a user subscription record in the prisma database with the payment details and subscription dates. Finally, it returns a response indicating the success of the subscription processing.
+*/
 export async function POST(req: Request) {
 	const body = await req.text();
 	const signature = headers().get("Stripe-Signature") as string;

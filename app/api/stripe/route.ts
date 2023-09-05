@@ -8,6 +8,11 @@ import { isAfter } from "date-fns";
 
 const membersUrl = absoluteUrl("/members");
 
+/*
+  Stripe checkout route: checks if the user is authenticated and has a valid subscription. 
+  If the user does not have a valid subscription, it creates a Stripe checkout session and returns the session URL. 
+  If the user is already subscribed, it returns an error message.
+*/
 export async function GET() {
 	try {
 		const { userId } = auth();
@@ -22,20 +27,6 @@ export async function GET() {
 		const userSubscription = await prisma.userSubscription.findUnique({
 			where: { userId },
 		});
-
-		// if (userSubscription) {
-		// 	if (userSubscription.stripeCustomerId) {
-		// 		const stripeSession = await stripe.billingPortal.sessions.create({
-		// 			customer: userSubscription.stripeCustomerId,
-		// 			return_url: membersUrl,
-		// 		});
-		// 		return new NextResponse(JSON.stringify({ url: stripeSession.url }));
-		// 	} else {
-		// 		return new NextResponse("Stripe customer ID not found", {
-		// 			status: 404,
-		// 		});
-		// 	}
-		// }
 
 		const currentDate = new Date();
 

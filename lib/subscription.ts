@@ -5,6 +5,14 @@ import { formatDateToFrench } from "./utils";
 import { isBefore } from "date-fns";
 
 const NO_SUBSCRIPTION = { isPremium: false, endDate: null };
+/*
+  Checks the subscription status of a user. 
+  It uses the auth function from the @clerk/nextjs package to get the user's ID. If the user ID is not available, it returns an object indicating that the user does not have a subscription. Otherwise, it queries the database using Prisma to get the user's subscription end date. 
+  If the subscription end date is not available, it also returns NO_SUBSCRIPTION. 
+  If the subscription end date is available, it compares it with the current date to determine if the user's subscription is still active. 
+  If the subscription is active, it returns an object indicating that the user has a premium subscription and the formatted subscription end date. 
+  If any error occurs during the process, it logs the error and returns NO_SUBSCRIPTION.
+*/
 export const checkSubscription = async () => {
 	const { userId } = auth();
 
