@@ -11,10 +11,6 @@ export async function POST(req: Request) {
 	let event: Stripe.Event;
 	const stripeWebHookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-	if (!stripeWebHookSecret) {
-		return new NextResponse("Stripe Webhook secret not found", { status: 500 });
-	}
-
 	if (!body || typeof body !== "string") {
 		return new NextResponse("Invalid request body", { status: 400 });
 	}
@@ -27,7 +23,7 @@ export async function POST(req: Request) {
 		event = stripe.webhooks.constructEvent(
 			body,
 			signature,
-			stripeWebHookSecret
+			stripeWebHookSecret!
 		);
 	} catch (err: any) {
 		return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 });
