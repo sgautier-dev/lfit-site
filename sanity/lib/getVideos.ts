@@ -2,7 +2,7 @@ import { client } from "./client";
 import groq from "groq";
 
 const getVideos = async (): Promise<Video[]> => {
-    const query = groq`*[_type == "videos"] | order(_createdAt asc){
+	const query = groq`*[_type == "videos"] | order(_createdAt asc){
         _id,
         title,
         length,
@@ -12,9 +12,9 @@ const getVideos = async (): Promise<Video[]> => {
         access
     }`;
 
-    const data: Video[] = await client.fetch(query);
+	const data: Video[] = await client.fetch(query);
 
-    return data;
+	return data;
 };
 
 export default getVideos;
