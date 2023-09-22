@@ -17,6 +17,7 @@ const envVarsToValidate = [
     "NEXT_PUBLIC_SITE_URL",
     "STRIPE_WEBHOOK_SECRET",
 	"STRIPE_PRICE_ID",
+	"REVALIDATE_TOKEN",
 	// ... any other variables to validate.
 ];
 
