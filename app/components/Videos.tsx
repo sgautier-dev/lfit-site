@@ -1,27 +1,26 @@
-"use client";
-import CategoryFilter from "./CategoryFilter";
-import { useState, useMemo } from "react";
-import { ALL_CATEGORIES_LABEL } from "@/lib/constants";
-import { LockOpenIcon, LockClosedIcon } from "@heroicons/react/24/solid";
+"use client"
+import CategoryFilter from "./CategoryFilter"
+import { useState, useMemo } from "react"
+import { ALL_CATEGORIES_LABEL } from "@/lib/constants"
+import { LockOpenIcon, LockClosedIcon } from "@heroicons/react/24/solid"
 
 interface VideosProps {
-	videos: Video[];
-	isPremium: boolean;
+	videos: Video[]
+	isPremium: boolean
 }
 
 export default function Videos({ videos, isPremium = false }: VideosProps) {
-	const [selectedCategory, setSelectedCategory] =
-		useState(ALL_CATEGORIES_LABEL);
+	const [selectedCategory, setSelectedCategory] = useState(ALL_CATEGORIES_LABEL)
 
 	const uniqueCategories = useMemo(() => {
-		const allCategories = videos.map((video) => video.category);
-		return Array.from(new Set(allCategories));
-	}, [videos]);
+		const allCategories = videos.map((video) => video.category)
+		return Array.from(new Set(allCategories))
+	}, [videos])
 
 	const filteredVideos =
 		selectedCategory === ALL_CATEGORIES_LABEL
 			? videos
-			: videos.filter((video) => video.category === selectedCategory);
+			: videos.filter((video) => video.category === selectedCategory)
 
 	return (
 		<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-20 lg:max-w-7xl lg:px-8">
@@ -48,7 +47,12 @@ export default function Videos({ videos, isPremium = false }: VideosProps) {
 				{filteredVideos.map((video) => (
 					<div key={video._id} className="group relative">
 						<div className="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100">
-							<video controls className="object-fill object-center" preload="none">
+							<video
+								controls
+								className="object-fill object-center"
+								preload="none"
+								poster={video.previewImageUrl}
+							>
 								<source src={video.videoUrl} type="video/mp4" />
 								Votre navigateur ne prend pas en charge le lecteur vidéo.
 							</video>
@@ -68,5 +72,5 @@ export default function Videos({ videos, isPremium = false }: VideosProps) {
 				))}
 			</div>
 		</div>
-	);
+	)
 }

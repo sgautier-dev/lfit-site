@@ -9,6 +9,7 @@ const getVideos = async (): Promise<Video[]> => {
         description,
         "videoUrl": video.asset->url,
         "category": category->name,
+        "previewImageUrl": category->previewImage.asset->url,
         access
     }`;
 

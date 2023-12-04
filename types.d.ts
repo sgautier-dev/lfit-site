@@ -128,4 +128,5 @@ interface Video extends Base  {
     videoUrl: string;
     category: string;
     access: string;
+	previewImageUrl: string;
 }
