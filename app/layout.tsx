@@ -51,6 +51,7 @@ export const metadata = {
 	description:
 		"Lynda, coach sportive certifiée à La Réunion, propose des séances de fitness adaptées pour tous les niveaux. Découvrez votre potentiel et sentez-vous bien dans votre corps",
 	authors: [{ name: "Sébastien Gautier", url: "https://www.sgautier.dev" }],
+	metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL!),
 };
 
 export default function RootLayout({
