@@ -83,6 +83,7 @@ export default authMiddleware({
 		"/api/webhook",
 		"/api/revalidate",
 		"/mentions",
+		"/cgv",
 		"/privacy",
 		"/api/contact",
 		"/studio",
