@@ -1,15 +1,32 @@
-import Videos from "../components/Videos";
-import getVideos from "@/sanity/lib/getVideos";
-import Image from "next/image";
-import SubscriptionButton from "../components/SubscriptionButton";
-import { checkSubscription } from "@/lib/subscription";
-import membersBackPic from "@/public/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg";
+import Videos from "../../components/Videos"
+import getVideos from "@/sanity/lib/getVideos"
+import Image from "next/image"
+import SubscriptionButton from "../../components/SubscriptionButton"
+import { checkSubscription } from "@/lib/subscription"
+import membersBackPic from "@/public/images/felipe-correia-ScQngs6oO1E-unsplash-1920X1280.jpg"
+
+async function getData() {
+	try {
+		// Parallel fetching of videos and subscription status
+		const [videos, subscription] = await Promise.all([
+			getVideos(),
+			checkSubscription(),
+		])
+
+		return {
+			videos,
+			endDate: subscription.endDate,
+			isPremium: subscription.isPremium,
+		}
+	} catch (error) {
+		// Log the error or handle it as needed
+		console.error("Failed to fetch videos and subscription data:", error)
+		throw new Error("Failed to fetch videos and subscription data")
+	}
+}
 
 export default async function Members() {
-	const [videos, { endDate, isPremium }] = await Promise.all([
-		getVideos(),
-		checkSubscription(),
-	]);
+	const { videos, endDate, isPremium } = await getData()
 
 	return (
 		<main className="relative mx-auto min-h-screen font-judson xl:mx-auto xl:max-w-7xl xl:px-8">
@@ -39,5 +56,5 @@ export default async function Members() {
 				<Videos videos={videos} isPremium={isPremium} />
 			</div>
 		</main>
-	);
+	)
 }

@@ -1,15 +1,13 @@
-import { navigation } from "@/lib/navigation"
 import Link from "next/link"
-// import {
-// 	UserButton,
-// 	SignedIn,
-// 	SignedOut,
-// 	SignInButton,
-// 	SignUpButton,
-// } from "@clerk/nextjs";
-import MobileMenu from "./MobileMenu"
+import {
+	UserButton,
+	SignedIn,
+	SignedOut,
+	SignInButton,
+	SignUpButton,
+} from "@clerk/nextjs"
 
-export default function Header() {
+export default function MembersHeader() {
 	return (
 		<header className="sticky top-0 z-10 bg-darkGrayCust text-white">
 			<nav
@@ -25,18 +23,7 @@ export default function Header() {
 						<p>L. FIT</p>
 					</Link>
 				</div>
-				<div className="hidden lg:flex lg:gap-x-12">
-					{navigation.map((item) => (
-						<Link
-							key={item.name}
-							href={item.href}
-							className="text-sm font-days leading-6 relative group"
-						>
-							{item.name}
-							<span className="absolute inset-x-0 bottom-0 h-1 mt-1 transform scale-x-0 group-hover:scale-x-100 transition duration-200 ease-out origin-left bg-pinkCust"></span>
-						</Link>
-					))}
-				</div>
+
 				<div className="flex flex-1 items-center justify-end gap-x-6">
 					<a
 						href={`tel:+262692799392`}
@@ -56,26 +43,41 @@ export default function Header() {
 							/>
 						</svg>
 					</a>
+
 					<div className="text-pinkCust">
-						<div className="flex gap-3 items-center">
-							<a
-								href="/members"
-								className="hover:scale-125 hover:opacity-80 transition"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 24 24"
-									fill="currentColor"
-									className="w-6 h-6 text-pinkCust"
-								>
-									<path
-										fillRule="evenodd"
-										d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-										clipRule="evenodd"
-									/>
-								</svg>
-							</a>
-						</div>
+						<SignedIn>
+							<div className="flex gap-3 items-center">
+								{/* Mount the UserButton component */}
+								<UserButton afterSignOutUrl="/" />
+							</div>
+						</SignedIn>
+
+						<SignedOut>
+							{/* Signed out users get sign in button */}
+							<div className="flex gap-3  items-center">
+								<SignInButton mode="redirect">
+									<button className="hover:scale-125 hover:opacity-80 transition">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 24 24"
+											fill="currentColor"
+											className="w-6 h-6 text-pinkCust"
+										>
+											<path
+												fillRule="evenodd"
+												d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+												clipRule="evenodd"
+											/>
+										</svg>
+									</button>
+								</SignInButton>
+								<SignUpButton mode="redirect">
+									<button className="hidden sm:block rounded-md bg-pinkCust px-3 py-2 text-sm font-days text-white shadow-sm hover:bg-pinkCust/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pinkCust">
+										S&apos;inscrire
+									</button>
+								</SignUpButton>
+							</div>
+						</SignedOut>
 					</div>
 
 					{/* <a
@@ -85,7 +87,6 @@ export default function Header() {
 						S&apos;inscrire
 					</a> */}
 				</div>
-				<MobileMenu />
 			</nav>
 		</header>
 	)
