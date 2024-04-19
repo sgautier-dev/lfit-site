@@ -13,6 +13,7 @@ export default function MembersLayout({
 			<ClerkLoaded>
 				<MembersHeader />
 				{children}
+				<Footer />
 			</ClerkLoaded>
 		</ClerkProvider>
 	)
