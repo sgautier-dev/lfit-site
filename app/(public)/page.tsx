@@ -9,6 +9,19 @@ import Coaching from "../components/Coaching"
 import Contact from "../components/Contact"
 import Planning from "../components/Planning"
 import Cookies from "../components/Cookies"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+	robots: {
+		index: true,
+		follow: true,
+		nocache: false,
+		googleBot: {
+			index: true,
+			follow: true,
+		},
+	},
+}
 
 export default function Home() {
 	return (
