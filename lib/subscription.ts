@@ -1,10 +1,12 @@
-import { auth } from "@clerk/nextjs";
-import prisma from "./prismadb";
-import logger from "./logger";
-import { formatDateToFrench } from "./utils";
-import { isBefore } from "date-fns";
+import { auth } from "@clerk/nextjs"
+import prisma from "./prismadb"
+import logger from "./logger"
+import { formatDateToFrench } from "./utils"
+import { isBefore } from "date-fns"
 
-const NO_SUBSCRIPTION = { isPremium: false, endDate: null };
+const NO_SUBSCRIPTION = { isPremium: false, endDate: null }
+
+
 /*
   Checks the subscription status of a user. 
   It uses the auth function from the @clerk/nextjs package to get the user's ID. If the user ID is not available, it returns an object indicating that the user does not have a subscription. Otherwise, it queries the database using Prisma to get the user's subscription end date. 
@@ -14,9 +16,11 @@ const NO_SUBSCRIPTION = { isPremium: false, endDate: null };
   If any error occurs during the process, it logs the error and returns NO_SUBSCRIPTION.
 */
 export const checkSubscription = async () => {
-	const { userId } = auth();
+	const { sessionClaims } = auth()
+	const customClaims = sessionClaims as CustomJwtSessionClaims
+	const userId = customClaims.userId
 
-	if (!userId) return NO_SUBSCRIPTION;
+	if (!userId) return NO_SUBSCRIPTION
 
 	try {
 		const userSubscription = await prisma.userSubscription.findUnique({
@@ -26,28 +30,28 @@ export const checkSubscription = async () => {
 			select: {
 				subscriptionEndDate: true,
 			},
-		});
+		})
 
 		if (!userSubscription || !userSubscription.subscriptionEndDate) {
-			return NO_SUBSCRIPTION;
+			return NO_SUBSCRIPTION
 		}
 
-		const currentDate = new Date();
+		const currentDate = new Date()
 		const isPremium = isBefore(
 			currentDate,
 			new Date(userSubscription.subscriptionEndDate)
-		);
+		)
 
 		if (!isPremium) {
-			return NO_SUBSCRIPTION;
+			return NO_SUBSCRIPTION
 		}
 
 		return {
 			isPremium,
 			endDate: formatDateToFrench(userSubscription.subscriptionEndDate),
-		};
+		}
 	} catch (error) {
-		logger.error('An error occurred in checkSubscription: ',error);
-		return NO_SUBSCRIPTION;
+		logger.error("An error occurred in checkSubscription: ", error)
+		return NO_SUBSCRIPTION
 	}
-};
+}
