@@ -15,9 +15,9 @@ const membersUrl = absoluteUrl("/members")
 */
 export async function GET() {
 	try {
-		const { sessionClaims } = auth()
+		const { sessionClaims, userId: authUserId } = auth()
 		const customClaims = sessionClaims as CustomJwtSessionClaims
-		const userId = customClaims.sub
+		const userId = customClaims?.userId || authUserId
 
 		// const { userId } = auth()
 

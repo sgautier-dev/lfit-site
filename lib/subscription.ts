@@ -15,11 +15,13 @@ const NO_SUBSCRIPTION = { isPremium: false, endDate: null }
   If any error occurs during the process, it logs the error and returns NO_SUBSCRIPTION.
 */
 export const checkSubscription = async () => {
-	const { sessionClaims } = auth()
+	const { sessionClaims, userId: authUserId } = auth()
 	const customClaims = sessionClaims as CustomJwtSessionClaims
-	const userId = customClaims.sub
+	const userId = customClaims?.userId || authUserId
 
 	// const { userId } = auth()
+	// console.log("checkSubscription sessionClaims: ", sessionClaims)
+	// console.log("checkSubscription userId: ", userId)
 
 	if (!userId) return NO_SUBSCRIPTION
 
@@ -32,6 +34,8 @@ export const checkSubscription = async () => {
 				subscriptionEndDate: true,
 			},
 		})
+
+		// console.log("userSubscription :", userSubscription)
 
 		if (!userSubscription || !userSubscription.subscriptionEndDate) {
 			return NO_SUBSCRIPTION
