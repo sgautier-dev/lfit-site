@@ -5,7 +5,7 @@ interface Window {
 }
 
 interface CustomJwtSessionClaims {
-	userId?: string
+	sub?: string
 }
 
 interface Base {

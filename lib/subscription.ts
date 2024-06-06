@@ -6,7 +6,6 @@ import { isBefore } from "date-fns"
 
 const NO_SUBSCRIPTION = { isPremium: false, endDate: null }
 
-
 /*
   Checks the subscription status of a user. 
   It uses the auth function from the @clerk/nextjs package to get the user's ID. If the user ID is not available, it returns an object indicating that the user does not have a subscription. Otherwise, it queries the database using Prisma to get the user's subscription end date. 
@@ -18,7 +17,9 @@ const NO_SUBSCRIPTION = { isPremium: false, endDate: null }
 export const checkSubscription = async () => {
 	const { sessionClaims } = auth()
 	const customClaims = sessionClaims as CustomJwtSessionClaims
-	const userId = customClaims.userId
+	const userId = customClaims.sub
+
+	// const { userId } = auth()
 
 	if (!userId) return NO_SUBSCRIPTION
 

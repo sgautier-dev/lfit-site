@@ -91,16 +91,20 @@ async function customMiddleware(request: NextRequest) {
 // See https://clerk.com/docs/nextjs/middleware for more information about configuring your middleware
 export default authMiddleware({
 	beforeAuth: (req, event) => {
+		console.log("Before Auth:", req.url)
 		return customMiddleware(req)
 	},
 	publicRoutes: (req) => !req.url.includes("/members"),
 	afterAuth(auth, req) {
+		console.log("userId", auth.userId)
 		// Handle users who aren't authenticated
 		if (!auth.userId && !auth.isPublicRoute) {
+			console.log("user not authenticated")
 			return redirectToSignIn({ returnBackUrl: req.url })
 		}
 		// If the user is signed in and trying to access a protected route, allow them to access route
 		if (auth.userId && !auth.isPublicRoute) {
+			console.log("user authenticated")
 			return NextResponse.next()
 		}
 		// Allow users visiting public routes to access them
@@ -110,5 +114,5 @@ export default authMiddleware({
 })
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-};
+	matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+}

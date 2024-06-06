@@ -17,7 +17,9 @@ export async function GET() {
 	try {
 		const { sessionClaims } = auth()
 		const customClaims = sessionClaims as CustomJwtSessionClaims
-		const userId = customClaims.userId
+		const userId = customClaims.sub
+
+		// const { userId } = auth()
 
 		const user = await currentUser()
 
