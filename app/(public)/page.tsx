@@ -8,7 +8,7 @@ import Toning from "../components/Toning"
 import Coaching from "../components/Coaching"
 import Contact from "../components/Contact"
 import Planning from "../components/Planning"
-import Cookies from "../components/Cookies"
+// import Cookies from "../components/Cookies"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function Home() {
 	return (
 		<main className="relative mx-auto min-h-screen font-judson">
-			<Cookies />
+			{/* <Cookies /> */}
 			<Hero />
 			<Formation />
 			<Cours />
