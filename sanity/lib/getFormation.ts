@@ -1,8 +1,10 @@
-import { client } from "./client";
-import groq from "groq";
+import { unstable_cache } from "next/cache"
+import { client } from "./client"
+import groq from "groq"
 
-const getFormation = async (): Promise<Training> => {
-	const query = groq`*[_type == "training"]{
+const getFormation = unstable_cache(
+	async (): Promise<Training> => {
+		const query = groq`*[_type == "training"]{
         title,
         presentation,
         "backgroundImage": backgroundImage.asset->url,
@@ -17,11 +19,14 @@ const getFormation = async (): Promise<Training> => {
             title,
             "image": image.asset->url
         }
-    }[0]`;
+    }[0]`
 
-	const data: Training = await client.fetch(query);
+		const data: Training = await client.fetch(query)
 
-	return data;
-};
+		return data
+	},
+	["training"],
+	{ tags: ["home"] }
+)
 
-export default getFormation;
+export default getFormation

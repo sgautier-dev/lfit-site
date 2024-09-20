@@ -1,8 +1,10 @@
-import { client } from "./client";
-import groq from "groq";
+import { unstable_cache } from "next/cache"
+import { client } from "./client"
+import groq from "groq"
 
-const getToning = async (): Promise<CoursSubSections> => {
-	const query = groq`*[_type == "toning"]{
+const getToning = unstable_cache(
+	async (): Promise<CoursSubSections> => {
+		const query = groq`*[_type == "toning"]{
         title,
         presentation,
         "backgroundImage": backgroundImage.asset->url,
@@ -14,11 +16,14 @@ const getToning = async (): Promise<CoursSubSections> => {
             },
             description
         }
-    }[0]`;
+    }[0]`
 
-	const data: CoursSubSections = await client.fetch(query);
+		const data: CoursSubSections = await client.fetch(query)
 
-	return data;
-};
+		return data
+	},
+	["toning"],
+	{ tags: ["home"] }
+)
 
-export default getToning;
+export default getToning

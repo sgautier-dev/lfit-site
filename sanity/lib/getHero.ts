@@ -1,15 +1,20 @@
-import { client } from "./client";
-import groq from "groq";
+import { unstable_cache } from "next/cache"
+import { client } from "./client"
+import groq from "groq"
 
-const getHero = async (): Promise<Hero> => {
-	const query = groq`*[_type == "hero"][0]{
+const getHero = unstable_cache(
+	async (): Promise<Hero> => {
+		const query = groq`*[_type == "hero"][0]{
         title,
         text,
-      }`;
+      }`
 
-	const data: Hero = await client.fetch(query);
+		const data: Hero = await client.fetch(query)
 
-	return data;
-};
+		return data
+	},
+	["hero"],
+	{ tags: ["home"] }
+)
 
-export default getHero;
+export default getHero

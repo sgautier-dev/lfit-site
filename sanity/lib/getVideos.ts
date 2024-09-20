@@ -1,8 +1,10 @@
-import { client } from "./client";
-import groq from "groq";
+import { unstable_cache } from "next/cache"
+import { client } from "./client"
+import groq from "groq"
 
-const getVideos = async (): Promise<Video[]> => {
-	const query = groq`*[_type == "videos"] | order(_createdAt asc){
+const getVideos = unstable_cache(
+	async (): Promise<Video[]> => {
+		const query = groq`*[_type == "videos"] | order(_createdAt asc){
         _id,
         title,
         length,
@@ -11,11 +13,14 @@ const getVideos = async (): Promise<Video[]> => {
         "category": category->name,
         "previewImageUrl": category->previewImage.asset->url,
         access
-    }`;
+    }`
 
-	const data: Video[] = await client.fetch(query);
+		const data: Video[] = await client.fetch(query)
 
-	return data;
-};
+		return data
+	},
+	["videos"],
+	{ tags: ["videos"] }
+)
 
-export default getVideos;
+export default getVideos
