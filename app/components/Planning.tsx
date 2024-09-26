@@ -1,13 +1,13 @@
-import Image from "next/image";
-import { Fragment } from "react";
-import getSeances from "@/sanity/lib/getSeances";
+import Image from "next/image"
+import { Fragment } from "react"
+import getSeances from "@/sanity/lib/getSeances"
 
 export default async function Planning() {
-	const seances = await getSeances();
+	const seances = await getSeances()
 
 	if ("empty" in seances) {
 		// notFound();
-		throw new Error("oups pas de donnée");
+		throw new Error("oups pas de donnée")
 	}
 	return (
 		<div
@@ -50,40 +50,46 @@ export default async function Planning() {
 									<p className="text-2xl text-left font-bold tracking-tight">
 										{day.date}
 									</p>
-									{day.sessions.map((session) => (
-										<div
-											className="mt-4 flex gap-x-6 text-lg"
-											key={`${session.course}-${session.start}-${session.end}`}
-										>
-											<Image
-												className="object-contain"
-												src={session.icon}
-												alt={`${session.course} icon`}
-												width={30}
-												height={30}
-												aria-hidden="true"
-											/>
+									{day.sessions && day.sessions.length > 0 ? (
+										day.sessions.map((session) => (
+											<div
+												className="mt-4 flex gap-x-6 text-lg"
+												key={`${session.course}-${session.start}-${session.end}`}
+											>
+												<Image
+													className="object-contain"
+													src={session.icon}
+													alt={`${session.course} icon`}
+													width={30}
+													height={30}
+													aria-hidden="true"
+												/>
 
-											<div className="flex-auto">
-												<div className="flex flex-col items-start gap-x-3">
-													<div className="font-medium leading-6 text-black">
-														{session.course}
-													</div>
-													<div className="flex gap-x-3">
-														<div className="mt-1 font-medium leading-5  text-pinkCust">
-															{session.start}
-															{"-"}
-															{session.end}
-															<div className="h-px w-full bg-darkGrayCust/50" />
+												<div className="flex-auto">
+													<div className="flex flex-col items-start gap-x-3">
+														<div className="font-medium leading-6 text-black">
+															{session.course}
 														</div>
-														<div className="rounded-md py-1 px-2 text-sm font-medium ring-1 ring-inset ring-pinkCust">
-															{session.duration} mins
+														<div className="flex gap-x-3">
+															<div className="mt-1 font-medium leading-5  text-pinkCust">
+																{session.start}
+																{"-"}
+																{session.end}
+																<div className="h-px w-full bg-darkGrayCust/50" />
+															</div>
+															<div className="rounded-md py-1 px-2 text-sm font-medium ring-1 ring-inset ring-pinkCust">
+																{session.duration} mins
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-									))}
+										))
+									) : (
+										<p className="font-medium leading-6 text-black">
+											Aucune séance pour ce jour.
+										</p>
+									)}
 								</div>
 							</Fragment>
 						))}
@@ -168,5 +174,5 @@ export default async function Planning() {
 				</div> */}
 			</div>
 		</div>
-	);
+	)
 }

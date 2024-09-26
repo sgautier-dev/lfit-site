@@ -2,6 +2,16 @@ import { unstable_cache } from "next/cache"
 import { client } from "./client"
 import groq from "groq"
 
+const daysOfWeek: Record<string, number> = {
+	Lundi: 1,
+	Mardi: 2,
+	Mercredi: 3,
+	Jeudi: 4,
+	Vendredi: 5,
+	Samedi: 6,
+	Dimanche: 7,
+}
+
 const getSeances = unstable_cache(
 	async (): Promise<Seance | Empty> => {
 		const query = groq`*[_type == "seances"]{
@@ -19,16 +29,6 @@ const getSeances = unstable_cache(
       }}
     }[0]`
 
-		const daysOfWeek: Record<string, number> = {
-			Lundi: 1,
-			Mardi: 2,
-			Mercredi: 3,
-			Jeudi: 4,
-			Vendredi: 5,
-			Samedi: 6,
-			Dimanche: 7,
-		}
-
 		const data: Seance = await client.fetch(query)
 
 		if (!data.schedule || data.schedule.length === 0) {
@@ -37,18 +37,24 @@ const getSeances = unstable_cache(
 
 		const schedulesWithDuration = data.schedule.map((schedule) => ({
 			...schedule,
-			sessions: schedule.sessions.map((session) => {
-				const [startHour, startMinute] = session.start.split(":").map(Number)
-				const [endHour, endMinute] = session.end.split(":").map(Number)
+			sessions: schedule.sessions
+				? schedule.sessions
+						.filter((session) => session.start && session.end)
+						.map((session) => {
+							const [startHour, startMinute] = session.start
+								.split(":")
+								.map(Number)
+							const [endHour, endMinute] = session.end.split(":").map(Number)
 
-				const durationMinutes =
-					(endHour - startHour) * 60 + (endMinute - startMinute)
+							const durationMinutes =
+								(endHour - startHour) * 60 + (endMinute - startMinute)
 
-				return {
-					...session,
-					duration: durationMinutes.toString(),
-				}
-			}),
+							return {
+								...session,
+								duration: durationMinutes.toString(),
+							}
+						})
+				: [],
 		}))
 
 		// Sort schedules by day of the week

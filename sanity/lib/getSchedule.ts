@@ -31,6 +31,14 @@ const getSchedule = unstable_cache(
 		const scheduleWithDuration = schedule.map((schedule) => ({
 			...schedule,
 			sessions: schedule.sessions.map((session) => {
+				if (!session.start || !session.end) {
+					// If start or end do not exist, return the session without duration.
+					return {
+						...session,
+						duration: "0",
+					}
+				}
+
 				const [startHour, startMinute] = session.start.split(":").map(Number)
 				const [endHour, endMinute] = session.end.split(":").map(Number)
 
