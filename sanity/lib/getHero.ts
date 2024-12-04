@@ -7,6 +7,8 @@ const getHero = unstable_cache(
 		const query = groq`*[_type == "hero"][0]{
         title,
         text,
+		"backgroundImage": backgroundImage.asset->url,
+        "heroImage": heroImage.asset->url,
       }`
 
 		const data: Hero = await client.fetch(query)

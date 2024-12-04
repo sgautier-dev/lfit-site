@@ -1,10 +1,8 @@
-import Image from "next/image";
-import getHero from "@/sanity/lib/getHero";
-import heroPic from "@/public/images/LiliSushi04_WhiteBorder-500X718.jpg"
-import heroBackPic from "@/public/images/sean-oulashin-KMn4VEeEPR8-unsplash-2400X1595.jpg"
+import Image from "next/image"
+import getHero from "@/sanity/lib/getHero"
 
 export default async function Hero() {
-	const hero = await getHero();
+	const hero = await getHero()
 	return (
 		<div className="relative xl:mx-auto xl:max-w-7xl xl:px-8 ">
 			<h1 className="absolute inset-x-0 top-0 text-center text-9xl font-caramel pt-10  text-pinkCust">
@@ -15,8 +13,7 @@ export default async function Hero() {
 			</h1>
 			<div className="grid lg:grid-cols-2 items-start pt-32 mx-auto max-w-3xl lg:max-w-4xl xl:max-w-5xl gap-x-8">
 				<Image
-					src={heroPic}
-					placeholder="blur"
+					src={hero.heroImage}
 					alt="Lynda votre coach fitness à la réunion"
 					width={400}
 					height={570}
@@ -38,8 +35,7 @@ export default async function Hero() {
 			</div>
 
 			<Image
-				src={heroBackPic}
-				placeholder="blur"
+				src={hero.backgroundImage}
 				alt="votre coach fitness sur la plage, ermitage la réunion"
 				width={2002}
 				height={1907}
@@ -48,5 +44,5 @@ export default async function Hero() {
 				priority
 			/>
 		</div>
-	);
+	)
 }

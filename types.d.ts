@@ -55,6 +55,8 @@ interface Schedule extends Base {
 interface Hero extends Base {
 	title: string
 	text: string
+	backgroundImage: string
+	heroImage: string
 }
 
 interface Icon extends Base {

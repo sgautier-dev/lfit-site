@@ -1,4 +1,4 @@
-import { defineType } from "sanity";
+import { defineType } from "sanity"
 
 export default defineType({
 	name: "hero",
@@ -9,12 +9,30 @@ export default defineType({
 			name: "title",
 			type: "string",
 			title: "Titre",
-            validation: (Rule) => Rule.required(),
+			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: "text",
 			title: "Texte",
 			type: "text",
 		},
+		{
+			name: "backgroundImage",
+			type: "image",
+			title: "Image d'arrière-plan",
+			options: {
+				hotspot: true,
+			},
+			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: "heroImage",
+			type: "image",
+			title: "Image principale",
+			options: {
+				hotspot: true,
+			},
+			validation: (Rule) => Rule.required(),
+		},
 	],
-});
+})
